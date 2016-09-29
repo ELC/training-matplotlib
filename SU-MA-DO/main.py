@@ -1,5 +1,5 @@
 from mainfunction import main
-from relations_dicts import get_adj_list
+from adjacency_lists import get_adj_list
 import timeit
 
 """

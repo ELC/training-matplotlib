@@ -19,61 +19,20 @@ def main(rel_id, shuffledlist=None):
     listofpoligons = generatePoligons(shuffledlist, poligon_list)
 
     return listofpoligons
-
-
-def get_dict_poligons2(rel):
-    def shortestpath(start, end):
-        nextnode = start
-        partialpath = {nextnode}
-        parent = lookfor_parents(rel, end, vertex,start)
-        while nextnode != end:
-            nextnode = parent[start]
-            partialpath.add(nextnode)
-            start = nextnode
-        return partialpath
-
-    setofcycles = {}
-    setofuniques = set()
-    count = 0
-    cycles = []
-    tested = set()
-    for vertex, child in rel.items():
-        pairs =  itertools.permutations(child,2)
-        for firstchild in child:
-            paths = set()
-            for otherchild in (i for i in child if i != firstchild):
-                tested.add(frozenset([firstchild,otherchild]))
-                path = {vertex}
-                centralpath = shortestpath(firstchild, otherchild)
-                path |= centralpath 
-                paths.add(frozenset(path))
-            minimum = min(len(i) for i in paths)
-            cycle = (i for i in paths if len(i) == minimum)
-            for i in cycle:
-                unique = frozenset(i)
-                if unique not in setofuniques:
-                    setofuniques.add(unique)
-                    setofcycles[count] = tuple(i)
-                    count += 1
     
-    return setofcycles
 
 def get_dict_poligons(rel):
     def shortestpath(start, end):
         nextnode = start
         partialpath = {nextnode}
-        parent = lookfor_parents(rel, end, vertex,start)
+        parent = lookfor_parents(rel, end, vertex, start)
         while nextnode != end:
             nextnode = parent[start]
             partialpath.add(nextnode)
             start = nextnode
         return partialpath
 
-    setofcycles = {}
-    setofuniques = set()
-    count = 0
-    cycles = []
-    checked = set()
+    setofcycles = []
     for vertex, child in rel.items():
         pairs = {}
         for a,b in itertools.permutations(child,2):
@@ -86,16 +45,13 @@ def get_dict_poligons(rel):
             for otherchild in secondpair:
                 path = {vertex}
                 centralpath = shortestpath(firstchild, otherchild)
-                path |= centralpath 
+                path |= centralpath
                 paths.add(frozenset(path))
             minimum = min(len(i) for i in paths)
-            cycle = (i for i in paths if len(i) == minimum)
-            for i in cycle:
-                unique = frozenset(i)
-                if unique not in setofuniques:
-                    setofuniques.add(unique)
-                    setofcycles[count] = tuple(i)
-                    count += 1
+            cycle = (tuple(i) for i in paths if len(i) == minimum)
+            expand = (i for i in cycle if i not in setofcycles)
+            setofcycles.extend(expand)
+            
     return setofcycles
 
 ##############################################################################
@@ -103,8 +59,8 @@ def lookfor_parents(adj, start, omit, final):
     """Return the parent tree for a given graph starting at `start`
     
     BFS implementation that given the adjacency list and a start node returns 
-    the parent for all nodes with the special condition that `omit` can have 
-    a parent but it cannot be the parent of other node
+    the parent for all nodes with the special condition that the `omit` node 
+    cannot be the parent of other node
     
     Args:
         adj: dictionary with the adjacency list of a graph
@@ -137,5 +93,5 @@ def initList(n):
     return listofnumbers
 
 
-def generatePoligons(sl, rel):
-    return tuple(sum(sl[j] for j in i) for i in rel.values())
+def generatePoligons(sl, poligon_list):
+    return tuple(sum(sl[j] for j in i) for i in poligon_list)

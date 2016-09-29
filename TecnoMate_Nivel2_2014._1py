@@ -1,1 +1,94 @@
+"""Problem 1 of TecnoMate 2014 Paradigm level
+Test:
+Input:
+4
+4
+1 b
+2 c
+3 e
+4 o
+3
+1 b
+2 b
+3 c
+3
+1 b
+1 c
+2 e
+32
+5 c
+2 b
+4 e
+3 o
+12 b
+1 c
+7 e
+6 c
+12 e
+4 o
+1 b
+6 o
+3 e
+12 o
+11 e
+12 c
+5 o
+10 b
+9 o
+3 c
+4 b
+11 c
+8 e
+9 c
+1 e
+4 c
+8 b
+2 o
+6 b
+9 e
+7 b
+5 e
 
+Output:
+B
+M
+M
+B
+"""
+
+def check_deck(cardsnumber):
+    """Return True if all the cards are shuffled, False otherwise"""
+    last_card = get_next_card()
+    flag = True
+    for i in range(cardsnumber-1):
+        newcard = get_next_card()
+        is_not_shuffle = check_cards(newcard,last_card)
+        if is_not_shuffle:
+            flag = False
+        last_card = newcard
+    return flag    
+
+def get_next_card():
+    """Return a new card, with its value and its type"""
+    card_raw = input()
+    card_value, card_type = card_raw.split()
+    return (card_value, card_type)
+    
+def check_cards(newcard,lastcard):
+    """Return True if the newcard and the last card are not shuffle, False otherwise"""
+    card_value, card_type = newcard
+    last_card_value = lastcard[0]
+    last_card_type = lastcard[1]
+    first_condition = card_value == last_card_value
+    second_condition = card_type == last_card_type
+    result = first_condition or second_condition
+    return result
+
+testsnumber = int(input())
+for i in range(testsnumber):
+    cardsnumber = int(input())
+    is_shuffle = check_deck(cardsnumber)
+    if is_shuffle:
+        print("B")
+    else:
+        print("M")

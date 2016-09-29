@@ -70,7 +70,7 @@ def getRelation(typerel):
       ,13 : [8,12,18]
       ,14 : [8,9,18,19]
       ,15 : [10,16,20]
-      ,16 : [10,11,15,17,21]
+      ,16 : [10,11,15,17,21,22]
       ,17 : [16,12,18]
       ,18 : [13,14,17,19,22,23]
       ,19 : [14,18,24]
@@ -95,7 +95,7 @@ def getDicOfPoligons(rel):
     		start = nextnode
     	return partialpath
    
-    setOfCycles = set()
+    setOfCycles = []
     for vertex,child in rel.items():
     	for firstchild in child:
     		paths = []
@@ -110,9 +110,10 @@ def getDicOfPoligons(rel):
     		minimum = min(len(i) for i in paths)
     		cycle = (i for i in paths if len(i) == minimum)
     		for i in cycle:
-    			setOfCycles.add(frozenset(i))
+    			setOfCycles.append(frozenset(i))
     result = generateDic(setOfCycles)
     return result
+
 
 
 def BFS (Adj,s,omit):
@@ -133,14 +134,7 @@ def BFS (Adj,s,omit):
 def generateDic(setOfCycles):
 	length = len(setOfCycles)
 	h = { number:poligon for number, poligon in zip(range(length),setOfCycles) }
-	for i in h.values():
-		print(i)
 	return h
-
-def isrepeated(listofelemens,baselist):
-	i = set(listofelemens)
-	j = set (baselist)
-	return i.issubset(j)
 
 def initList(typerel):
     limit = typerel**2 + 1
@@ -149,7 +143,8 @@ def initList(typerel):
     return listOfNumbers
 
 def generatePoligons(sL,rel):
-    return {sum(sL[j] for j in i) for i in rel.values()}
+	h = {sum(sL[j] for j in i) for i in rel.values()}
+	return h
 
 
 """
@@ -179,8 +174,6 @@ def testing():
 		start_time = timeit.default_timer()
 		result = main(typerel,a)
 		totalTime = timeit.default_timer() - start_time
-		
-		print(result)
 		
 		passed = result == expected
 		

@@ -1,14 +1,26 @@
 from random import shuffle
+import timeit
 
 def main(typerel=3, shuffledList=[]):
-    selectedRelation = getRelation(typerel)
-    for i in selectedRelation:
-    	print(i, selectedRelation[i])
-    if not shuffledList:        
-        shuffledList = initList(typerel)
-        
-    listOfPoligons = generatePoligons(shuffledList, selectedRelation)
-    return listOfPoligons
+	
+	start_time = timeit.default_timer()
+	selectedRelation = getRelation(typerel)
+	totalTime = timeit.default_timer() - start_time
+	print(" Relation Time:", totalTime)
+	
+	start_time = timeit.default_timer()
+	if not shuffledList:
+		shuffledList = initList(typerel)
+	totalTime = timeit.default_timer() - start_time
+	print(" Gen List Time:", totalTime)
+	
+	start_time = timeit.default_timer()
+	listOfPoligons = generatePoligons(shuffledList, selectedRelation)
+	totalTime = timeit.default_timer() - start_time
+	print(" Poligons Time:", totalTime)
+	
+	
+	return listOfPoligons
 
 def getRelation(typerel):
     rel3x3 = {
@@ -100,6 +112,17 @@ def generateDic(setOfCycles):
 	length = len(setOfCycles)
 	setOfCycles = cleancycles(setOfCycles)
 	return { number:poligon for number, poligon in zip(range(length),setOfCycles) }
+	
+def cleancycles(cycles):
+	aux = [list(i) for i in cycles]
+	for i in aux[:]:
+		aux2 = aux[:]
+		aux2.remove(i)
+		for j in aux2:
+		    if all(k in i for k in j) or len(i) > 4 :
+		        aux.remove(i)
+		        break
+	return sorted(aux)
 
 def initList(typerel):
     limit = typerel**2 + 1
@@ -110,19 +133,35 @@ def initList(typerel):
 def generatePoligons(sL,rel):
     return [sum(sL[j] for j in i) for i in rel.values()]
 
-def cleancycles(cycles):
-	aux = [sorted(list(i)) for i in cycles]
-	for i in aux[:]:
-		aux2 = aux[:]
-		aux2.remove(i)
-		for j in aux2:
-		    if all(k in i for k in j) or len(i) > 4 :
-		        aux.remove(i)
-		        break
-	return sorted(aux)
 
-a = [8,5,9,1,7,6,2,3,4]
-a = [7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14]
-a = [9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24]
-print(main())
+"""
+
+Testing
+
+"""
+def testing():
+	testcases = {
+		"3x3": ([8,5,9,1,7,6,2,3,4], [20, 16, 27, 13, 17, 14])
+		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], [17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34])
+		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],[34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52])
+		}
+	i = "3x3"
+	for i in testcases:
+		a = testcases[i][0]
+		expected = testcases[i][1]
+	
+		typerel = len(a) ** 0.5
+		
+		print("\nTest for", i)
+		
+		start_time = timeit.default_timer()
+		result = main(typerel,a)
+		totalTime = timeit.default_timer() - start_time
+		
+		passed = result == expected
+		
+		print(" Total Time: ", totalTime, "\n Pass = ", passed)
+	
+
+testing()
 

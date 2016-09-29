@@ -33,11 +33,7 @@ def get_dict_poligons(rel):
 
     setofcycles = []
     for vertex, child in rel.items():
-        pairs = {}
-        for a,b in itertools.permutations(child,2):
-        	if a not in pairs:
-        		pairs[a] = []
-        	pairs[a].append(b)
+        pairs = get_pairs(child)
         for firstchild in pairs:
             paths = set()
             secondpair = pairs[firstchild]
@@ -45,13 +41,31 @@ def get_dict_poligons(rel):
                 path = {vertex}
                 centralpath = shortestpath(firstchild, otherchild)
                 path |= centralpath
-                paths.add(frozenset(path))
+                path = tuple(path)
+                paths.add(path)
+            if not path:
+                continue
             minimum = min(len(i) for i in paths)
-            minimum_cycles = (tuple(i) for i in paths if len(i) == minimum)
-            new_cycles = (i for i in minimum_cycles if i not in setofcycles)
+            minimum_cycles = (i for i in paths if len(i) == minimum)
+            new_cycles = (i for i in minimum_cycles)
             setofcycles.extend(new_cycles)
-            
+        clean_vertex(rel,vertex)
     return setofcycles
+
+def clean_vertex(adj,vertex):
+    """Remove `vertex` from the adjacency nodes of every node in `adj`"""
+    for i in adj.values():
+        if vertex in i:
+            i.remove(vertex)
+
+def get_pairs(base_list):
+    """Return dict with the combinations of list elements"""
+    pairs = {}
+    for a,b in itertools.combinations(base_list,2):
+        	if a not in pairs:
+        		pairs[a] = []
+        	pairs[a].append(b)
+    return pairs
 
 ##############################################################################
 def lookfor_parents(adj, start, omit, final):
@@ -72,12 +86,12 @@ def lookfor_parents(adj, start, omit, final):
     frontier = [start]
     while frontier:
         nextfrontier = []
-        for u in frontier:
-            for v in adj[u]:
-                if v not in parent:
-                    parent[v] = u
-                    nextfrontier.append(v)
-                if v == final:
+        for node in frontier:
+            for rel_node in adj[node]:
+                if rel_node not in parent:
+                    parent[rel_node] = node
+                    nextfrontier.append(rel_node)
+                if rel_node == final:
                     return parent
         if omit in nextfrontier:
             nextfrontier.remove(omit)

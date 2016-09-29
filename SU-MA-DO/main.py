@@ -78,27 +78,33 @@ def testing():
             [9, 1, 14, 23, 17, 16, 8, 18, 2, 25, 7, 22, 5, 20, 21, 11, 15, 6,
              12,
              13, 19, 4, 10, 3, 24]
-            , (34, 23, 39, 67, 31, 53, 42, 52, 45, 48, 55, 33, 48, 43, 46, 49, 43, 29, 25, 52))
+            , (34, 23, 39, 42, 67, 31, 52, 53, 45, 48, 55, 33, 48, 43, 46, 49, 43, 29, 52, 25))
     }
     print("Testing Main Function")
 
     relativetime = []
     passes = []
-
+    
+    totaltime = []
+    
     for i in sorted(testcases):
         typerel = i[0]
 
         printhead()
+        
 
         inputtest = testcases[i][0]
         result, ttime, difference = test(typerel)
-
+        
+        totaltime.append(ttime)
+        
         expectedoutput = testcases[i][1]
         passed = result == expectedoutput
         passes.append(passed)
 
         printfooter()
     if all(passes):
+        print("\n\n Totaltime:", sum(totaltime))
         print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     else:
         print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")

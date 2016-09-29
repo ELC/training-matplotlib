@@ -1,22 +1,21 @@
 from random import shuffle
-
 import itertools
 from relations_dicts import get_adj_list
 
 
-def main(rel_id, shuffledlist=None):
+def main(rel_id, vertex_list=None):
     """Return the tuple of poligon numbers"""
     
     adj_list = get_adj_list(rel_id)
     poligon_list = get_dict_poligons(adj_list)
     
     
-    if shuffledlist is None:
+    if vertex_list is None:
         adj_list_len = len(adj_list)
-        shuffledlist = initList(adj_list_len)
+        vertex_list = initList(adj_list_len)
         
     
-    listofpoligons = generatePoligons(shuffledlist, poligon_list)
+    listofpoligons = generatePoligons(vertex_list, poligon_list)
 
     return listofpoligons
     
@@ -48,9 +47,9 @@ def get_dict_poligons(rel):
                 path |= centralpath
                 paths.add(frozenset(path))
             minimum = min(len(i) for i in paths)
-            cycle = (tuple(i) for i in paths if len(i) == minimum)
-            expand = (i for i in cycle if i not in setofcycles)
-            setofcycles.extend(expand)
+            minimum_cycles = (tuple(i) for i in paths if len(i) == minimum)
+            new_cycles = (i for i in minimum_cycles if i not in setofcycles)
+            setofcycles.extend(new_cycles)
             
     return setofcycles
 
@@ -93,5 +92,16 @@ def initList(n):
     return listofnumbers
 
 
-def generatePoligons(sl, poligon_list):
-    return tuple(sum(sl[j] for j in i) for i in poligon_list)
+def generatePoligons(vertexes_values, poligon_list):
+    """Returns the poligon numbers given the vertexes for each poligon
+    
+    Args:
+        vertexes_values: list of vertexes values
+        poligon_list: list of poligons, each poligon is given by the list 
+        of its vertexes
+
+    """
+    poligon_numbers = (sum(vertexes_values[vertex] for vertex in poligon) 
+                                          for poligon in poligon_list)
+    poligon_numbers = tuple(poligon_numbers)
+    return poligon_numbers

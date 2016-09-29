@@ -99,9 +99,9 @@ def testing():
 
         printfooter()
     if all(passes):
-        print("EXITO")
+        print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     else:
-        print("FRACASO")
+        print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
 
 if __name__ == "__main__":
     testing()

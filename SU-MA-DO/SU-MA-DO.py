@@ -3,26 +3,17 @@ import timeit
 
 def main(typerel=3, shuffledList=[]):
 	
-	start_time = timeit.default_timer()
 	selectedRelation = getRelation(typerel)
-	totalTime = timeit.default_timer() - start_time
-	print(" Relation Time:", totalTime)
-	
-	start_time = timeit.default_timer()
+
 	if not shuffledList:
 		shuffledList = initList(typerel)
-	totalTime = timeit.default_timer() - start_time
-	print(" Gen List Time:", totalTime)
 	
-	start_time = timeit.default_timer()
 	listOfPoligons = generatePoligons(shuffledList, selectedRelation)
-	totalTime = timeit.default_timer() - start_time
-	print(" Poligons Time:", totalTime)
-	
 	
 	return listOfPoligons
 
 def getRelation(typerel):
+    start_time = timeit.default_timer()
     rel3x3 = {
        0 : [1,3,4]
       ,1 : [0,2,4]
@@ -83,10 +74,13 @@ def getRelation(typerel):
       }
     listOfRelations = {3:rel3x3, 4:rel4x4, 5:rel5x5 }
     typeOfRelation = listOfRelations[typerel]
+    print("timer1",timeit.default_timer() - start_time)
+    
     dicOfPoligons = getDicOfPoligons(typeOfRelation)
     return dicOfPoligons
 
 def getDicOfPoligons(rel):
+    start_time = timeit.default_timer()
     vertexes = []
     setOfCycles = set()
     def look(vertex, vertexes):
@@ -105,7 +99,11 @@ def getDicOfPoligons(rel):
     for vertex in rel:
         lookingvalue = vertex
         look(vertex, vertexes)
-    return generateDic(setOfCycles)
+    print("timer2",timeit.default_timer() - start_time)
+    start_time = timeit.default_timer()
+    result = generateDic(setOfCycles)
+    print("timer3",timeit.default_timer() - start_time)
+    return result
 
 
 def generateDic(setOfCycles):
@@ -145,7 +143,7 @@ def testing():
 		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], [17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34])
 		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],[34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52])
 		}
-	i = "3x3"
+	print("Testing Main Function")
 	for i in testcases:
 		a = testcases[i][0]
 		expected = testcases[i][1]

@@ -156,14 +156,23 @@ Testing
 
 def testing():
 	testcases = {
-		"2x3": ([1,2,3,4,5,6], {8, 10, 16})
-		,"3x3": ([8,5,9,1,7,6,2,3,4], {20, 16, 27, 13, 17, 14})
-		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], {17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34})
-		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],{34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52})
+		"2x3": ([1,2,3,4,5,6]
+				, {8, 10, 16})
+				
+		,"3x3": ([8,5,9,1,7,6,2,3,4]
+				, {20, 16, 27, 13, 17, 14})
+				
+		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14]
+				, {17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34})
+				
+		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24]
+				,{34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52})
 		}
 	print("Testing Main Function")
 	
-	for i in testcases:
+	relativetime = []
+	
+	for i in sorted(testcases):
 		a = testcases[i][0]
 		expected = testcases[i][1]
 	
@@ -175,9 +184,18 @@ def testing():
 		result = main(typerel,a)
 		totalTime = timeit.default_timer() - start_time
 		
+		
+		relativetime.append(totalTime)
+		difference = relativetime[-1] - relativetime[0] 
+		if difference != 0:
+			difference = (difference  / relativetime[0] ) *100
+			difference = int(difference)
+			difference = "+ " + str(difference) + "%"
+		else:
+			difference = "-"
 		passed = result == expected
 		
-		print(" Total Time: ", totalTime, "\n Pass = ", passed)
+		print(" Total Time: ", totalTime, "\n Difference with first:", difference, "\n Pass = ", passed)
 
 testing()
 

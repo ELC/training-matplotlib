@@ -86,132 +86,56 @@ def getRelation(typerel):
     return dicOfPoligons
 
 def getDicOfPoligons(rel):
-    start_time = timeit.default_timer()
-    
-    vertexes = []
+    def shortestpath(start,end):
+    	partialpath = [start]
+    	parent = BFS(rel,end,vertex)
+    	while partialpath[-1] != end:
+    		nextnode = parent[start]
+    		partialpath.append(nextnode)
+    		start = nextnode
+    	return partialpath
+   
     setOfCycles = set()
-    def look(vertex, vertexes):
-            related = (i for i in rel[vertex])
-            vertexes.append(vertex)
-            check(related)
-            
-    def check(related):
-        for i in related:
-            if not i in vertexes:
-                look(i, vertexes)
-            elif i == lookingvalue:
-                vertexes.append(i)
-                if len(vertexes) != 3:
-                    setOfCycles.add(frozenset(vertexes[:]))
-                del vertexes[-1]            
-        del vertexes[-1]
-    
-    def clean(vertex,rel):
-        for j in rel.values():
-            if vertex in j:
-                j.remove(vertex)
-    
-    for vertex in rel:
-        lookingvalue = vertex
-        look(vertex, vertexes)
-        clean(vertex, rel)
-        for key, possiblesingleton in rel.items():
-        	if len(possiblesingleton) == 1:
-        	    clean(key,rel)
-        
-        
-    print("timer2",timeit.default_timer() - start_time)
+    for vertex,child in rel.items():
+    	for firstchild in child:
+    		paths = []
+    		for otherchild in child:
+    			if firstchild != otherchild:
+    				path = []
+    				path.append(vertex)
+    				centralpath = shortestpath(firstchild,otherchild)
+    				path.extend(centralpath)
+    				path.append(vertex)
+    				paths.append(path)
+    		minimum = min(len(i) for i in paths)
+    		cycle = (i for i in paths if len(i) == minimum)
+    		for i in cycle:
+    			setOfCycles.add(frozenset(i))
     result = generateDic(setOfCycles)
-    
-    
     return result
+
+
+def BFS (Adj,s,omit):
+	parent = {s : None }
+	frontier = [s]
+	while frontier:
+		next = [ ]
+		for u in frontier:
+			if u != omit:
+				for v in Adj[u]:
+					if v not in parent:
+						parent[v] = u
+						next.append(v)
+		frontier = next
+	return parent
 
 
 def generateDic(setOfCycles):
 	length = len(setOfCycles)
-	setOfCycles = cleancycles(setOfCycles)
-	return { number:poligon for number, poligon in zip(range(length),setOfCycles) }
-	
-def cleancycles(cycles):
-	start_time = timeit.default_timer()
-	aux = [list(i) for i in cycles]
-	aux.sort(key=len, reverse=True)
-	minlength = len(aux[-1])
-	iteration = [list(i) for i in aux if len(i) > minlength]
-
-	
-	for i in iteration:
-		aux2 = (list(j) for j in reversed(aux) if j != i)
-		for j in aux2:
-		    if (not len(i) == len(j) and isrepeated(j,i)) or len(i) > 5:
-		        aux.remove(i)
-		        break
-	"""
-	TODO Make it work without the "or len(i) > 5"
-	
-	without that condition for 3x3 the output is:
-	[[8, 4, 5]
-	, [0, 1, 4]
-	, [8, 4, 7]
-	, [0, 3, 4]
-	, [3, 4, 6, 7]
-	, [1, 2, 4, 5]
-	, [0, 1, 2, 3, 5, 6, 7, 8]]
-	
-	
-	and it should be:
-	[[8, 4, 5]
-	, [0, 1, 4]
-	, [8, 4, 7]
-	, [0, 3, 4]
-	, [3, 4, 6, 7]
-	, [1, 2, 4, 5]]
-	
-	Eliminate vertexes with are not part of a sub poligon
-	
-	in the 4x4 case it is:
-	
-	[[1, 4, 5]
-	, [11, 14, 15]
-	, [2, 3, 7]
-	, [0, 1, 4]
-	, [8, 12, 13]
-	, [10, 11, 14]
-	, [2, 6, 7]
-	, [8, 9, 13]
-	, [9, 10, 5, 6]
-	, [9, 10, 13, 14]
-	, [8, 9, 4, 5]
-	, [1, 2, 5, 6]
-	, [10, 11, 6, 7]
-	, [4, 5, 6, 8, 10, 13, 14]
-	, [5, 6, 7, 9, 11, 13, 14]
-	, [1, 2, 4, 6, 8, 9, 10]
-	, [1, 2, 5, 7, 9, 10, 11]
-	, [1, 2, 4, 7, 8, 9, 10, 11]
-	, [4, 5, 6, 7, 8, 11, 13, 14]
-	, [1, 2, 4, 6, 8, 10, 13, 14]
-	, [1, 2, 5, 7, 9, 11, 13, 14]
-	, [1, 2, 4, 7, 8, 11, 13, 14]]
-	
-	and should be:
-	[[1, 4, 5]
-	, [11, 14, 15]
-	, [2, 3, 7]
-	, [0, 1, 4]
-	, [8, 12, 13]
-	, [10, 11, 14]
-	, [2, 6, 7]
-	, [8, 9, 13]
-	, [9, 10, 5, 6]
-	, [9, 10, 13, 14]
-	, [8, 9, 4, 5]
-	, [1, 2, 5, 6]
-	, [10, 11, 6, 7]]
-	
-	"""
-	print("timer3",timeit.default_timer() - start_time)
-	return sorted(aux)
+	h = { number:poligon for number, poligon in zip(range(length),setOfCycles) }
+	for i in h.values():
+		print(i)
+	return h
 
 def isrepeated(listofelemens,baselist):
 	i = set(listofelemens)
@@ -225,7 +149,7 @@ def initList(typerel):
     return listOfNumbers
 
 def generatePoligons(sL,rel):
-    return [sum(sL[j] for j in i) for i in rel.values()]
+    return {sum(sL[j] for j in i) for i in rel.values()}
 
 
 """
@@ -237,10 +161,10 @@ Testing
 
 def testing():
 	testcases = {
-		"2x3": ([1,2,3,4,5,6], [8, 10, 16])
-		,"3x3": ([8,5,9,1,7,6,2,3,4], [20, 16, 27, 13, 17, 14])
-		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], [17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34])
-		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],[34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52])
+		"2x3": ([1,2,3,4,5,6], {8, 10, 16})
+		,"3x3": ([8,5,9,1,7,6,2,3,4], {20, 16, 27, 13, 17, 14})
+		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], {17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34})
+		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],{34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52})
 		}
 	print("Testing Main Function")
 	
@@ -256,10 +180,11 @@ def testing():
 		result = main(typerel,a)
 		totalTime = timeit.default_timer() - start_time
 		
+		print(result)
+		
 		passed = result == expected
 		
 		print(" Total Time: ", totalTime, "\n Pass = ", passed)
-	
 
 testing()
 

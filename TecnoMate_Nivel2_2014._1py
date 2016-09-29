@@ -1,1 +1,45 @@
+"""Problem 1 of TecnoMate 2014 Paradigm level
 
+To test this program the input and expected output are provided in the `input.txt` and `output.txt` files
+"""
+
+def is_deck_shuffled(cardsnumber):
+    """Return True if all the cards are correctly shuffled, False otherwise."""
+    last_card = get_next_card()
+    correctly_shuffled = True
+    for i in range(cardsnumber-1):
+        newcard = get_next_card()
+        shuffled = are_shuffled(newcard,last_card)
+        if not shuffled:
+            correctly_shuffled = False
+        last_card = newcard
+    return correctly_shuffled    
+
+def get_next_card():
+    """Return a new card, with its value and its type."""
+    card_raw = input()
+    card_value, card_type = card_raw.split()
+    return card_value, card_type
+    
+def are_shuffled(newcard,lastcard):
+    """Return True if the newcard and the last card are shuffle, False
+    otherwise."""
+    card_value, card_type = newcard
+    last_card_value, last_card_type = lastcard
+    first_condition = card_value != last_card_value
+    second_condition = card_type != last_card_type
+    result = first_condition and second_condition
+    return result
+
+def main():
+    """Print B if a given deck is correctly shuffled, M otherwise."""
+    testsnumber = int(input())
+    for i in range(testsnumber):
+        cards_number = int(input())
+        is_shuffle = is_deck_shuffled(cards_number)
+        if is_shuffle:
+            print("B")
+        else:
+            print("M")
+
+main()

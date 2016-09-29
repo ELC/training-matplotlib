@@ -91,11 +91,11 @@ def main(nro_rel=3, shuffledlist=None):
     return listofpoligons
 
 
-def get_dict_poligons(rel):
+def get_dict_poligons2(rel):
     def shortestpath(start, end):
         nextnode = start
         partialpath = {nextnode}
-        parent = lookfor_parents(rel, end, vertex)
+        parent = lookfor_parents(rel, end, vertex,start)
         while nextnode != end:
             nextnode = parent[start]
             partialpath.add(nextnode)
@@ -106,27 +106,67 @@ def get_dict_poligons(rel):
     setofuniques = set()
     count = 0
     cycles = []
+    tested = set()
     for vertex, child in rel.items():
+        pairs =  itertools.permutations(child,2)
         for firstchild in child:
             paths = set()
-            for otherchild in child:
-                if firstchild != otherchild:
-                    path = {vertex}
-                    centralpath = shortestpath(firstchild, otherchild)
-                    path |= centralpath 
-                    paths.add(frozenset(path))
+            for otherchild in (i for i in child if i != firstchild):
+                tested.add(frozenset([firstchild,otherchild]))
+                path = {vertex}
+                centralpath = shortestpath(firstchild, otherchild)
+                path |= centralpath 
+                paths.add(frozenset(path))
             minimum = min(len(i) for i in paths)
             cycle = (i for i in paths if len(i) == minimum)
             for i in cycle:
-            	unique = frozenset(i)
-            	if unique not in setofuniques:
-            		setofuniques.add(unique)
-            		setofcycles[count] = tuple(i)
-            		count += 1
+                unique = frozenset(i)
+                if unique not in setofuniques:
+                    setofuniques.add(unique)
+                    setofcycles[count] = tuple(i)
+                    count += 1
+    
+    return setofcycles
+
+def get_dict_poligons(rel):
+    def shortestpath(start, end):
+        nextnode = start
+        partialpath = {nextnode}
+        parent = lookfor_parents(rel, end, vertex,start)
+        while nextnode != end:
+            nextnode = parent[start]
+            partialpath.add(nextnode)
+            start = nextnode
+        return partialpath
+
+    setofcycles = {}
+    setofuniques = set()
+    count = 0
+    cycles = []
+    tested = set()
+    for vertex, child in rel.items():
+        pairs =  itertools.permutations(child,2)
+        for firstchild in child:
+            paths = set()
+            for otherchild in (i for i in child if i != firstchild):
+                tested.add(frozenset([firstchild,otherchild]))
+                path = {vertex}
+                centralpath = shortestpath(firstchild, otherchild)
+                path |= centralpath 
+                paths.add(frozenset(path))
+            minimum = min(len(i) for i in paths)
+            cycle = (i for i in paths if len(i) == minimum)
+            for i in cycle:
+                unique = frozenset(i)
+                if unique not in setofuniques:
+                    setofuniques.add(unique)
+                    setofcycles[count] = tuple(i)
+                    count += 1
+    
     return setofcycles
 
 
-def lookfor_parents(adj, s, omit):
+def lookfor_parents(adj, s, omit,start):
     parent = {s: None}
     frontier = [s]
     while frontier:
@@ -136,11 +176,12 @@ def lookfor_parents(adj, s, omit):
                 if v not in parent:
                     parent[v] = u
                     nextfrontier.append(v)
+                if v == start:
+                    return parent
         if omit in nextfrontier:
-        	nextfrontier.remove(omit)
+            nextfrontier.remove(omit)
         frontier = nextfrontier
     return parent
-
 
 def initList(typerel):
     limit = typerel ** 2 + 1
@@ -251,7 +292,7 @@ def testing():
 
         printfooter()
     if all(passes):
-    	print("EXITO")
+        print("EXITO")
     else:
-    	print("FRACASO")
+        print("FRACASO")
 testing()

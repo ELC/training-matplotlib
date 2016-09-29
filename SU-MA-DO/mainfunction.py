@@ -4,17 +4,18 @@ import itertools
 from relations_dicts import get_adj_list
 
 
-def main(nro_rel=3, shuffledlist=None):
+def main(rel_id, shuffledlist=None):
+    """Return the tuple of poligon numbers"""
+    
+    adj_list = get_adj_list(rel_id)
+    poligon_list = get_dict_poligons(adj_list)
+    
     
     if shuffledlist is None:
-        shuffledlist = []
+        adj_list_len = len(adj_list)
+        shuffledlist = initList(adj_list_len)
         
-    adj_list = get_adj_list(nro_rel)
-    poligon_list = get_dict_poligons(adj_list)
-
-    if not shuffledlist:
-        shuffledlist = initList(typerel)
-
+    
     listofpoligons = generatePoligons(shuffledlist, poligon_list)
 
     return listofpoligons
@@ -97,10 +98,23 @@ def get_dict_poligons(rel):
                     count += 1
     return setofcycles
 
-
-def lookfor_parents(adj, s, omit,start):
-    parent = {s: None}
-    frontier = [s]
+##############################################################################
+def lookfor_parents(adj, start, omit, final):
+    """Return the parent tree for a given graph starting at `start`
+    
+    BFS implementation that given the adjacency list and a start node returns 
+    the parent for all nodes with the special condition that `omit` can have 
+    a parent but it cannot be the parent of other node
+    
+    Args:
+        adj: dictionary with the adjacency list of a graph
+        start: initial node
+        omit: node that cannot be parent of any other node
+        final: node that stops the execution
+    
+    """
+    parent = {start: None}
+    frontier = [start]
     while frontier:
         nextfrontier = []
         for u in frontier:
@@ -108,21 +122,20 @@ def lookfor_parents(adj, s, omit,start):
                 if v not in parent:
                     parent[v] = u
                     nextfrontier.append(v)
-                if v == start:
+                if v == final:
                     return parent
         if omit in nextfrontier:
             nextfrontier.remove(omit)
         frontier = nextfrontier
     return parent
 
-def initList(typerel):
-    limit = typerel ** 2 + 1
+def initList(n):
+    """Returns a list from 1 to `n` sorted randomly"""
+    limit = n+1
     listofnumbers = [i for i in range(1, limit)]
     shuffle(listofnumbers)
     return listofnumbers
 
 
 def generatePoligons(sl, rel):
-    h = tuple(sum(sl[j] for j in i) for i in rel.values())
-    print(h)
-    return h
+    return tuple(sum(sl[j] for j in i) for i in rel.values())

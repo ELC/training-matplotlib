@@ -1,4 +1,5 @@
-def get_adj_list(number):
+def get_adj_list(adj_list_id):
+    """Return the adjancency list given its id"""
     triangle = {
     	0:[3,1]
     	,1: [0,2,3,4]
@@ -75,5 +76,13 @@ def get_adj_list(number):
         , 23: [18, 22, 24]
         , 24: [19, 23]
     }
-    listofrelations = {"t":triangle, "2": rel2x3, "3": rel3x3, "4": rel4x4, "5": rel5x5}
-    return listofrelations[number]
+    
+    list_of_adj_lists = {
+        "t":triangle
+        , "2": rel2x3
+        , "3": rel3x3
+        , "4": rel4x4
+        , "5": rel5x5
+        }
+    adj_list = list_of_adj_lists[adj_list_id]
+    return adj_list

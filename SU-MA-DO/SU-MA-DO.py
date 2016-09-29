@@ -1,8 +1,9 @@
 from random import shuffle
 import timeit
+import itertools
 
 
-def retrieverel(number):
+def get_adj_list(number):
     rel2x3 = {
         0: [1, 3, 4]
         , 1: [0, 2, 4]
@@ -17,7 +18,7 @@ def retrieverel(number):
         , 1: [0, 2, 4]
         , 2: [1, 5]
         , 3: [0, 4, 6]
-        , 4: [0, 1, 3, 5, 7]
+        , 4: [0, 1, 3, 5, 7, 8]
         , 5: [2, 4, 8]
         , 6: [3, 7]
         , 7: [4, 6, 8]
@@ -74,74 +75,71 @@ def retrieverel(number):
     return listofrelations[number]
 
 
-def main(typerel=3, shuffledlist=None):
+def main(nro_rel=3, shuffledlist=None):
+    
     if shuffledlist is None:
         shuffledlist = []
-    selectedrelation = getRelation(typerel)
+        
+    adj_list = get_adj_list(nro_rel)
+    poligon_list = get_dict_poligons(adj_list)
 
     if not shuffledlist:
         shuffledlist = initList(typerel)
 
-    listofpoligons = generatePoligons(shuffledlist, selectedrelation)
+    listofpoligons = generatePoligons(shuffledlist, poligon_list)
 
     return listofpoligons
 
 
-def getRelation(typerel):
-    typeofrelation = retrieverel(typerel)
-    dicofpoligons = getDicOfPoligons(typeofrelation)
-    return dicofpoligons
-
-
-def getDicOfPoligons(rel):
+def get_dict_poligons(rel):
     def shortestpath(start, end):
-        partialpath = [start]
-        parent = BFS(rel, end, vertex)
-        while partialpath[-1] != end:
+        nextnode = start
+        partialpath = {nextnode}
+        parent = lookfor_parents(rel, end, vertex)
+        while nextnode != end:
             nextnode = parent[start]
-            partialpath.append(nextnode)
+            partialpath.add(nextnode)
             start = nextnode
         return partialpath
 
-    setofcycles = set()
+    setofcycles = {}
+    setofuniques = set()
+    count = 0
+    cycles = []
     for vertex, child in rel.items():
         for firstchild in child:
             paths = set()
             for otherchild in child:
                 if firstchild != otherchild:
-                    path = [vertex]
+                    path = {vertex}
                     centralpath = shortestpath(firstchild, otherchild)
-                    path.extend(centralpath)
-                    path.append(vertex)
+                    path |= centralpath 
                     paths.add(frozenset(path))
             minimum = min(len(i) for i in paths)
             cycle = (i for i in paths if len(i) == minimum)
             for i in cycle:
-                setofcycles.add(frozenset(i))
-    result = generateDic(setofcycles)
-    return result
+            	unique = frozenset(i)
+            	if unique not in setofuniques:
+            		setofuniques.add(unique)
+            		setofcycles[count] = tuple(i)
+            		count += 1
+    return setofcycles
 
 
-def BFS(adj, s, omit):
+def lookfor_parents(adj, s, omit):
     parent = {s: None}
     frontier = [s]
     while frontier:
         nextfrontier = []
         for u in frontier:
-            if u != omit:
-                for v in adj[u]:
-                    if v not in parent:
-                        parent[v] = u
-                        nextfrontier.append(v)
+            for v in adj[u]:
+                if v not in parent:
+                    parent[v] = u
+                    nextfrontier.append(v)
+        if omit in nextfrontier:
+        	nextfrontier.remove(omit)
         frontier = nextfrontier
     return parent
-
-
-def generateDic(setofcycles):
-    length = len(setofcycles)
-    h = {number: poligon for number, poligon in
-         zip(range(length), setofcycles)}
-    return h
 
 
 def initList(typerel):
@@ -165,7 +163,7 @@ Testing
 
 def testing():
     def getinfofromrel(reltype):
-        rel = retrieverel(reltype)
+        rel = get_adj_list(reltype)
         nodes = getnumberofnodes(rel)
         edges = getnumberofedges(rel)
         return nodes, edges
@@ -237,6 +235,7 @@ def testing():
     print("Testing Main Function")
 
     relativetime = []
+    passes = []
 
     for i in sorted(testcases):
         typerel = int(i[0])
@@ -248,7 +247,11 @@ def testing():
 
         expectedoutput = testcases[i][1]
         passed = result == expectedoutput
+        passes.append(passed)
 
         printfooter()
-
+    if all(passes):
+    	print("EXITO")
+    else:
+    	print("FRACASO")
 testing()

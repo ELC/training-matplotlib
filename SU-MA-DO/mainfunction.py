@@ -43,11 +43,7 @@ def get_dict_poligons(rel):
                 path |= centralpath
                 path = tuple(path)
                 paths.add(path)
-            if not path:
-                continue
-            minimum = min(len(i) for i in paths)
-            minimum_cycles = (i for i in paths if len(i) == minimum)
-            new_cycles = (i for i in minimum_cycles)
+            new_cycles = get_new_cycles(paths)
             setofcycles.extend(new_cycles)
         clean_vertex(rel,vertex)
     return setofcycles
@@ -66,6 +62,13 @@ def get_pairs(base_list):
         		pairs[a] = []
         	pairs[a].append(b)
     return pairs
+
+def get_new_cycles(paths):
+    """Return a list of the cycles with minimum length"""
+    minimum = min(len(i) for i in paths)
+    minimum_cycles = (i for i in paths if len(i) == minimum)
+    new_cycles = (i for i in minimum_cycles)
+    return new_cycles
 
 ##############################################################################
 def lookfor_parents(adj, start, omit, final):

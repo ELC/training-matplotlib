@@ -88,22 +88,24 @@ def getRelation(typerel):
 def getDicOfPoligons(rel):
     start_time = timeit.default_timer()
     
-    
     vertexes = []
     setOfCycles = set()
     def look(vertex, vertexes):
             related = (i for i in rel[vertex])
             vertexes.append(vertex)
-            for i in related:
-                if not i in vertexes:
-                    look(i, vertexes)
-                if i == lookingvalue:
-                    vertexes.append(i)
-                    if len(vertexes) != 3:
-                        setOfCycles.add(frozenset(vertexes[:]))
-                    del vertexes[-1]            
-            del vertexes[-1]
+            check(related)
             
+    def check(related):
+        for i in related:
+            if not i in vertexes:
+                look(i, vertexes)
+            elif i == lookingvalue:
+                vertexes.append(i)
+                if len(vertexes) != 3:
+                    setOfCycles.add(frozenset(vertexes[:]))
+                del vertexes[-1]            
+        del vertexes[-1]
+    
     def clean(vertex,rel):
         for j in rel.values():
             if vertex in j:
@@ -156,6 +158,7 @@ def cleancycles(cycles):
 	, [1, 2, 4, 5]
 	, [0, 1, 2, 3, 5, 6, 7, 8]]
 	
+	
 	and it should be:
 	[[8, 4, 5]
 	, [0, 1, 4]
@@ -207,12 +210,13 @@ def cleancycles(cycles):
 	, [10, 11, 6, 7]]
 	
 	"""
-	print(sorted(aux,key=len))
 	print("timer3",timeit.default_timer() - start_time)
 	return sorted(aux)
 
 def isrepeated(listofelemens,baselist):
-	return all(i in baselist for i in listofelemens)
+	i = set(listofelemens)
+	j = set (baselist)
+	return i.issubset(j)
 
 def initList(typerel):
     limit = typerel**2 + 1

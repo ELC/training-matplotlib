@@ -4,6 +4,15 @@ import itertools
 
 
 def get_adj_list(number):
+    triangle = {
+    	0:[3,1]
+    	,1: [0,2,3,4]
+    	,2: [1,4]
+    	,3: [0,1,4,5]
+    	,4: [1,2,3,5]
+    	,5: [3,4]
+    }
+    
     rel2x3 = {
         0: [1, 3, 4]
         , 1: [0, 2, 4]
@@ -71,7 +80,7 @@ def get_adj_list(number):
         , 23: [18, 22, 24]
         , 24: [19, 23]
     }
-    listofrelations = {2: rel2x3, 3: rel3x3, 4: rel4x4, 5: rel5x5}
+    listofrelations = {"t":triangle, "2": rel2x3, "3": rel3x3, "4": rel4x4, "5": rel5x5}
     return listofrelations[number]
 
 
@@ -143,13 +152,17 @@ def get_dict_poligons(rel):
     setofuniques = set()
     count = 0
     cycles = []
-    tested = set()
+    checked = set()
     for vertex, child in rel.items():
-        pairs =  itertools.permutations(child,2)
-        for firstchild in child:
+        pairs = {}
+        for a,b in itertools.permutations(child,2):
+        	if a not in pairs:
+        		pairs[a] = []
+        	pairs[a].append(b)
+        for firstchild in pairs:
             paths = set()
-            for otherchild in (i for i in child if i != firstchild):
-                tested.add(frozenset([firstchild,otherchild]))
+            secondpair = pairs[firstchild]
+            for otherchild in secondpair:
                 path = {vertex}
                 centralpath = shortestpath(firstchild, otherchild)
                 path |= centralpath 
@@ -162,7 +175,6 @@ def get_dict_poligons(rel):
                     setofuniques.add(unique)
                     setofcycles[count] = tuple(i)
                     count += 1
-    
     return setofcycles
 
 
@@ -239,7 +251,8 @@ def testing():
         nodes, edges = getinfofromrel(typerel)
         print("\nTest for", i
               , "\n Number of Nodes:", nodes
-              , "\n Number of Edges:", edges)
+              , "\n Number of Edges:", edges
+              , "\n Total parts:", nodes + edges)
 
     def printfooter():
         print(" Time in microseconds: ", ttime
@@ -256,7 +269,8 @@ def testing():
         return output, time, diff
 
     testcases = {
-        "2x3": ([1, 2, 3, 4, 5, 6]
+        "triangle": ([i for i in range(1,7)],{7,11,10,15})
+        ,"2x3": ([1, 2, 3, 4, 5, 6]
                 , {8, 10, 16})
 
         , "3x3": ([8, 5, 9, 1, 7, 6, 2, 3, 4]
@@ -279,7 +293,7 @@ def testing():
     passes = []
 
     for i in sorted(testcases):
-        typerel = int(i[0])
+        typerel = i[0]
 
         printhead()
 

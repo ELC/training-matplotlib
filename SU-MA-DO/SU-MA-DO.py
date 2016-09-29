@@ -7,13 +7,21 @@ def main(typerel=3, shuffledList=[]):
 
 	if not shuffledList:
 		shuffledList = initList(typerel)
-	
+		
 	listOfPoligons = generatePoligons(shuffledList, selectedRelation)
 	
 	return listOfPoligons
 
 def getRelation(typerel):
-    start_time = timeit.default_timer()
+    rel2x3 = {
+		0: [1, 3, 4]
+    	, 1: [0, 2, 4]
+    	, 2: [1, 5]
+    	, 3: [0, 4]
+    	, 4: [0, 1, 3, 5]
+    	, 5: [2, 4]
+		}
+	
     rel3x3 = {
        0 : [1,3,4]
       ,1 : [0,2,4]
@@ -72,15 +80,15 @@ def getRelation(typerel):
       ,23 : [18,22,24]
       ,24 : [19,23]
       }
-    listOfRelations = {3:rel3x3, 4:rel4x4, 5:rel5x5 }
-    typeOfRelation = listOfRelations[typerel]
-    print("timer1",timeit.default_timer() - start_time)
-    
+    listOfRelations = {2:rel2x3, 3:rel3x3, 4:rel4x4, 5:rel5x5 }
+    typeOfRelation = listOfRelations[typerel].copy()
     dicOfPoligons = getDicOfPoligons(typeOfRelation)
     return dicOfPoligons
 
 def getDicOfPoligons(rel):
     start_time = timeit.default_timer()
+    
+    
     vertexes = []
     setOfCycles = set()
     def look(vertex, vertexes):
@@ -96,13 +104,24 @@ def getDicOfPoligons(rel):
                     del vertexes[-1]            
             del vertexes[-1]
             
+    def clean(vertex,rel):
+        for j in rel.values():
+            if vertex in j:
+                j.remove(vertex)
+    
     for vertex in rel:
         lookingvalue = vertex
         look(vertex, vertexes)
+        clean(vertex, rel)
+        for key, possiblesingleton in rel.items():
+        	if len(possiblesingleton) == 1:
+        	    clean(key,rel)
+        
+        
     print("timer2",timeit.default_timer() - start_time)
-    start_time = timeit.default_timer()
     result = generateDic(setOfCycles)
-    print("timer3",timeit.default_timer() - start_time)
+    
+    
     return result
 
 
@@ -112,15 +131,36 @@ def generateDic(setOfCycles):
 	return { number:poligon for number, poligon in zip(range(length),setOfCycles) }
 	
 def cleancycles(cycles):
+	start_time = timeit.default_timer()
 	aux = [list(i) for i in cycles]
-	for i in aux[:]:
+	aux.sort(key=len, reverse=True)
+	minlength = len(aux[-1])
+	iteration = [list(i) for i in aux if len(i) > minlength]
+
+	
+	for i in iteration:
 		aux2 = aux[:]
 		aux2.remove(i)
 		for j in aux2:
-		    if all(k in i for k in j) or len(i) > 4 :
+		    if (not len(i) == len(j) and isrepeated(j,i)) or len(i) > 5:
 		        aux.remove(i)
 		        break
+	
+	"""
+	
+	for i in iteration:
+		aux2 = (list(j) for j in reversed(aux) if j != i)
+		for j in aux2:
+		    if (not len(i) == len(j) and isrepeated(j,i)):
+		        aux.remove(i)
+		        break		        
+	"""
+	
+	print("timer3",timeit.default_timer() - start_time)
 	return sorted(aux)
+
+def isrepeated(listofelemens,baselist):
+	return all(i in baselist for i in listofelemens)
 
 def initList(typerel):
     limit = typerel**2 + 1
@@ -137,18 +177,22 @@ def generatePoligons(sL,rel):
 Testing
 
 """
+#print(main(2,[1,2,3,4,5,6]))
+
 def testing():
 	testcases = {
-		"3x3": ([8,5,9,1,7,6,2,3,4], [20, 16, 27, 13, 17, 14])
+		"2x3": ([1,2,3,4,5,6], [8, 10, 16])
+		,"3x3": ([8,5,9,1,7,6,2,3,4], [20, 16, 27, 13, 17, 14])
 		,"4x4": ([7,2,6,10,8,13,1,12,15,11,3,16,5,9,4,14], [17, 22, 23, 28, 19, 47, 35, 29, 28, 27, 32, 23, 34])
 		,"5x5": ([9,1,14,23,17,16,8,18,2,25,7,22,5,20,21,11,15,6,12,13,19,4,10,3,24],[34, 23, 39, 42, 67, 48, 45, 55, 31, 53, 52, 33, 48, 43, 49, 29, 43, 46, 25, 52])
 		}
 	print("Testing Main Function")
+	
 	for i in testcases:
 		a = testcases[i][0]
 		expected = testcases[i][1]
 	
-		typerel = len(a) ** 0.5
+		typerel = int(i[0])
 		
 		print("\nTest for", i)
 		

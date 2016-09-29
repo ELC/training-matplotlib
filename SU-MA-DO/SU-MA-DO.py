@@ -139,23 +139,75 @@ def cleancycles(cycles):
 
 	
 	for i in iteration:
-		aux2 = aux[:]
-		aux2.remove(i)
+		aux2 = (list(j) for j in reversed(aux) if j != i)
 		for j in aux2:
 		    if (not len(i) == len(j) and isrepeated(j,i)) or len(i) > 5:
 		        aux.remove(i)
 		        break
+	"""
+	TODO Make it work without the "or len(i) > 5"
+	
+	without that condition for 3x3 the output is:
+	[[8, 4, 5]
+	, [0, 1, 4]
+	, [8, 4, 7]
+	, [0, 3, 4]
+	, [3, 4, 6, 7]
+	, [1, 2, 4, 5]
+	, [0, 1, 2, 3, 5, 6, 7, 8]]
+	
+	and it should be:
+	[[8, 4, 5]
+	, [0, 1, 4]
+	, [8, 4, 7]
+	, [0, 3, 4]
+	, [3, 4, 6, 7]
+	, [1, 2, 4, 5]]
+	
+	Eliminate vertexes with are not part of a sub poligon
+	
+	in the 4x4 case it is:
+	
+	[[1, 4, 5]
+	, [11, 14, 15]
+	, [2, 3, 7]
+	, [0, 1, 4]
+	, [8, 12, 13]
+	, [10, 11, 14]
+	, [2, 6, 7]
+	, [8, 9, 13]
+	, [9, 10, 5, 6]
+	, [9, 10, 13, 14]
+	, [8, 9, 4, 5]
+	, [1, 2, 5, 6]
+	, [10, 11, 6, 7]
+	, [4, 5, 6, 8, 10, 13, 14]
+	, [5, 6, 7, 9, 11, 13, 14]
+	, [1, 2, 4, 6, 8, 9, 10]
+	, [1, 2, 5, 7, 9, 10, 11]
+	, [1, 2, 4, 7, 8, 9, 10, 11]
+	, [4, 5, 6, 7, 8, 11, 13, 14]
+	, [1, 2, 4, 6, 8, 10, 13, 14]
+	, [1, 2, 5, 7, 9, 11, 13, 14]
+	, [1, 2, 4, 7, 8, 11, 13, 14]]
+	
+	and should be:
+	[[1, 4, 5]
+	, [11, 14, 15]
+	, [2, 3, 7]
+	, [0, 1, 4]
+	, [8, 12, 13]
+	, [10, 11, 14]
+	, [2, 6, 7]
+	, [8, 9, 13]
+	, [9, 10, 5, 6]
+	, [9, 10, 13, 14]
+	, [8, 9, 4, 5]
+	, [1, 2, 5, 6]
+	, [10, 11, 6, 7]]
 	
 	"""
-	
-	for i in iteration:
-		aux2 = (list(j) for j in reversed(aux) if j != i)
-		for j in aux2:
-		    if (not len(i) == len(j) and isrepeated(j,i)):
-		        aux.remove(i)
-		        break		        
-	"""
-	
+	print(sorted(aux,key=len))
 	print("timer3",timeit.default_timer() - start_time)
 	return sorted(aux)
 

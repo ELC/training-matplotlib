@@ -34,7 +34,7 @@ class TestMainFunction(unittest.TestCase):
             ,3 : [1,2]
             ,4 : [1,2,3]
             }
-        result = mainfunction.clean_vertex(i)
+        result = mainfunction.clean_vertex(adj, vertex)
         self.assertEqual(result,o)
 """
 def testing():

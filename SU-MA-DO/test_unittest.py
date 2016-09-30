@@ -7,7 +7,18 @@ import timeit
 Testing
 
 """
-
+class TestMainFunction(unittest.TestCase):
+    
+    def test_get_pairs(self):
+        i = [1,2,3,4]
+        o = {
+            1:[2,3,4]
+            ,2:[3,4]
+            ,3:[4]
+            }
+	o = 5
+        result = mainfunction.getpairs(i)
+        self.assertEqual(result,o)
 
 def testing():
     def getinfofromrel(reltype):

@@ -1,14 +1,42 @@
-from mainfunction import main
+import mainfunction
 from adjacency_lists import get_adj_list
 import timeit
+import unittest
 
 """
 
 Testing
 
 """
+class TestMainFunction(unittest.TestCase):
+    
+    def test_get_pairs(self):
+        i = [1,2,3,4]
+        o = {
+            1:[2,3,4]
+            ,2:[3,4]
+            ,3:[4]
+            }
+        result = mainfunction.get_pairs(i)
+        self.assertEqual(result,o)
 
-
+    def test_clean_vertex(self):
+        adj = {
+            1 : [2,3,4]
+            ,2 : [1,3,4]
+            ,3 : [1,2,4]
+            ,4 : [1,2,3]
+            }
+        vertex = 4
+        o = {
+            1 : [2,3]
+            ,2 : [1,3]
+            ,3 : [1,2]
+            ,4 : [1,2,3]
+            }
+        mainfunction.clean_vertex(adj, vertex)
+        self.assertEqual(adj ,o)
+"""
 def testing():
     def getinfofromrel(reltype):
         rel = get_adj_list(reltype)
@@ -57,7 +85,7 @@ def testing():
 
     def test(reltype):
         start_time = timeit.default_timer()
-        output = main(reltype, inputtest)
+        output = mainfunction.main(reltype, inputtest)
         time = timeit.default_timer() - start_time
         relativetime.append(time)
         time, diff = timecalulation(time)
@@ -111,4 +139,4 @@ def testing():
 
 if __name__ == "__main__":
     testing()
-
+"""

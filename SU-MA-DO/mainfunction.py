@@ -97,7 +97,6 @@ def get_poligon_vertexes(adj_list):
             new_cycles = get_new_cycles(paths)
             setofcycles.extend(new_cycles)
         clean_vertex(adj_list,vertex)
-    print(setofcycles)
     return setofcycles
 
 def get_pairs(base_list):

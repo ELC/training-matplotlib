@@ -15,7 +15,7 @@ class TestMainFunction(unittest.TestCase):
             ,2:[3,4]
             ,3:[4]
             }
-        result = mainfunction.getpairs(i)
+        result = mainfunction.get_pairs(i)
         self.assertEqual(result,o)
     
     def test_clean_vertex(self):

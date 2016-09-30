@@ -1,4 +1,4 @@
-from mainfunction import main
+import mainfunction
 from adjacency_lists import get_adj_list
 import timeit
 import unittest
@@ -69,7 +69,7 @@ def testing():
 
     def test(reltype):
         start_time = timeit.default_timer()
-        output = main(reltype, inputtest)
+        output = mainfunction.main(reltype, inputtest)
         time = timeit.default_timer() - start_time
         relativetime.append(time)
         time, diff = timecalulation(time)

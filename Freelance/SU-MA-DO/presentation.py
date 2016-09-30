@@ -1,6 +1,14 @@
 import mainfunction
 from adjacency_lists import get_adj_list
 import timeit
+import json
+
+"""
+
+Testing
+
+"""
+
 
 def testing():
     def getinfofromrel(reltype):
@@ -50,28 +58,32 @@ def testing():
 
     def test(reltype):
         start_time = timeit.default_timer()
-        output = mainfunction.main(reltype, inputtest)
+        output_raw = mainfunction.main(reltype, inputtest)
         time = timeit.default_timer() - start_time
         relativetime.append(time)
         time, diff = timecalulation(time)
+        output = json.loads(output_raw)
         return output, time, diff
 
     testcases = {
-        "triangle": ([1,2,3,4,5,6],(7, 10, 11, 15))
+        "triangle": ([1,2,3,4,5,6]
+            ,{"vertexes": [1,2,3,4,5,6]
+            ,"poligons": [7, 10, 11, 15]})
         ,"2x3": ([1, 2, 3, 4, 5, 6]
-                , (8, 10, 16))
+            ,{"vertexes": [1, 2, 3, 4, 5, 6]
+            ,"poligons": [8, 10, 16]})
 
         , "3x3": ([8, 5, 9, 1, 7, 6, 2, 3, 4]
-                  , (20, 16, 27, 13, 17, 14))
+            ,{"vertexes": [8, 5, 9, 1, 7, 6, 2, 3, 4]
+            ,"poligons": [20, 16, 27, 13, 17, 14]})
 
         , "4x4": ([7, 2, 6, 10, 8, 13, 1, 12, 15, 11, 3, 16, 5, 9, 4, 14]
-                  , (17, 22, 23, 28, 19, 47, 28, 32, 35, 29, 27, 23, 34))
+            ,{"vertexes": [7, 2, 6, 10, 8, 13, 1, 12, 15, 11, 3, 16, 5, 9, 4, 14]
+            ,"poligons": [17, 22, 23, 28, 19, 47, 28, 32, 35, 29, 27, 23, 34]})
 
-        , "5x5": (
-            [9, 1, 14, 23, 17, 16, 8, 18, 2, 25, 7, 22, 5, 20, 21, 11, 15, 6,
-             12,
-             13, 19, 4, 10, 3, 24]
-            , (34, 23, 39, 42, 67, 31, 52, 53, 45, 48, 55, 33, 48, 43, 46, 49, 43, 29, 52, 25))
+        , "5x5": ([9, 1, 14, 23, 17, 16, 8, 18, 2, 25, 7, 22, 5, 20, 21, 11, 15, 6, 12, 13, 19, 4, 10, 3, 24]
+             ,{"vertexes": [9, 1, 14, 23, 17, 16, 8, 18, 2, 25, 7, 22, 5, 20, 21, 11, 15, 6, 12, 13, 19, 4, 10, 3, 24]
+            ,"poligons": [34, 23, 39, 42, 67, 31, 52, 53, 45, 48, 55, 33, 48, 43, 46, 49, 43, 29, 52, 25]})
     }
     print("Testing Main Function")
 
@@ -98,9 +110,9 @@ def testing():
         printfooter()
     if all(passes):
         print("\n\n Totaltime:", sum(totaltime))
-        print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        print("Passed")
     else:
-        print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
+        print("Fail")
 
 if __name__ == "__main__":
     testing()

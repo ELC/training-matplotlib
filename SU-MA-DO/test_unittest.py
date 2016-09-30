@@ -16,7 +16,7 @@ class TestMainFunction(unittest.TestCase):
             ,2:[3,4]
             ,3:[4]
             }
-	o = 5
+        o = 5
         result = mainfunction.getpairs(i)
         self.assertEqual(result,o)
 """

@@ -34,8 +34,8 @@ class TestMainFunction(unittest.TestCase):
             ,3 : [1,2]
             ,4 : [1,2,3]
             }
-        result = mainfunction.clean_vertex(adj, vertex)
-        self.assertEqual(result,o)
+        mainfunction.clean_vertex(adj, vertex)
+        self.assertEqual(adj ,o)
 """
 def testing():
     def getinfofromrel(reltype):

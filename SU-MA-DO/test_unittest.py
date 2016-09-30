@@ -18,7 +18,7 @@ class TestMainFunction(unittest.TestCase):
             ,3:[4]
             }
         o = 5
-        result = mainfunction.getpairs(i)
+        result = mainfunction.get_pairs(i)
         self.assertEqual(result,o)
 """
 def testing():

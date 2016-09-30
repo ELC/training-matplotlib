@@ -19,7 +19,7 @@ class TestMainFunction(unittest.TestCase):
 	o = 5
         result = mainfunction.getpairs(i)
         self.assertEqual(result,o)
-
+"""
 def testing():
     def getinfofromrel(reltype):
         rel = get_adj_list(reltype)
@@ -122,4 +122,4 @@ def testing():
 
 if __name__ == "__main__":
     testing()
-
+"""

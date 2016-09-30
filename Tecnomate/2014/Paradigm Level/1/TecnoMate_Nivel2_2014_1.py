@@ -3,7 +3,7 @@
 To test this program the input and expected output are provided in the `input.txt` and `output.txt` files
 """
 
-class deck(object):
+class Deck(object):
     """A collection of cards which can check whether they are shuffled or
     not."""
     
@@ -21,7 +21,7 @@ class deck(object):
     
     def add_card(self):
         """ Add a new card to the deck"""
-        new_card = card()
+        new_card = Card()
         self.cards.append(new_card)
         self.shuffled &= self.is_shuffled()
     
@@ -35,7 +35,7 @@ class deck(object):
         
         
     
-class card(object):
+class Card(object):
     """A pair of Value-Type where Value can be from 0 to 12 and type can be "p", "c", "o" or "e". """
     
     def __init__(self):
@@ -59,7 +59,7 @@ def main():
     """Print B if a given deck is correctly shuffled, M otherwise."""
     testsnumber = int(input())
     for i in range(testsnumber):
-        new_deck = deck()
+        new_deck = Deck()
         if new_deck.shuffled:
             print("B")
         else:

@@ -19,6 +19,23 @@ class TestMainFunction(unittest.TestCase):
             }
         result = mainfunction.get_pairs(i)
         self.assertEqual(result,o)
+
+    def test_clean_vertex(self):
+        adj = {
+            1 : [2,3,4]
+            ,2 : [1,3,4]
+            ,3 : [1,2,4]
+            ,4 : [1,2,3]
+            }
+        vertex = 4
+        o = {
+            1 : [2,3]
+            ,2 : [1,3]
+            ,3 : [1,2]
+            ,4 : [1,2,3]
+            }
+        result = mainfunction.clean_vertex(i)
+        self.assertEqual(result,o)
 """
 def testing():
     def getinfofromrel(reltype):

@@ -5,9 +5,9 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set BUILDDIR=_build
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% .
-set I18NSPHINXOPTS=%SPHINXOPTS% .
+set BUILDDIR=build
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% source
+set I18NSPHINXOPTS=%SPHINXOPTS% source
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
 	set I18NSPHINXOPTS=-D latex_paper_size=%PAPER% %I18NSPHINXOPTS%
@@ -211,7 +211,13 @@ if "%1" == "texinfo" (
 	goto end
 )
 
-
+if "%1" == "gettext" (
+	%SPHINXBUILD% -b gettext %I18NSPHINXOPTS% %BUILDDIR%/locale
+	if errorlevel 1 exit /b 1
+	echo.
+	echo.Build finished. The message catalogs are in %BUILDDIR%/locale.
+	goto end
+)
 
 if "%1" == "changes" (
 	%SPHINXBUILD% -b changes %ALLSPHINXOPTS% %BUILDDIR%/changes

@@ -1,6 +1,5 @@
 language: python
 python:
-        - "3.2"
         - "3.3"
         - "3.4"
         - "3.5"
@@ -8,4 +7,7 @@ python:
 install: pip install -r requirements.txt
 script:
 - py.test ./Freelance/SU-MA-DO/test_unittest.py
-- cd ./Freelance/SU-MA-DO/docs && make  html
+- travis-sphinx build
+
+after_success:
+    - travis-sphinx deploy

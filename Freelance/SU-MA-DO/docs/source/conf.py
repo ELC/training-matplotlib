@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # SU-MA-DO documentation build configuration file, created by
-# sphinx-quickstart on Sat Oct  1 12:06:36 2016.
+# sphinx-quickstart on Sat Oct  1 12:49:02 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -32,6 +32,7 @@
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.coverage',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,8 +53,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'SU-MA-DO'
-copyright = '2016, Ezequiel Castaño'
-author = 'Ezequiel Castaño'
+copyright = '2016, Castaño Ezequiel'
+author = 'Castaño Ezequiel'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -83,7 +84,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -263,7 +264,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'SU-MA-DO.tex', 'SU-MA-DO Documentation',
-     'Ezequiel Castaño', 'manual'),
+     'Castaño Ezequiel', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

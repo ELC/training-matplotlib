@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # SU-MA-DO documentation build configuration file, created by
@@ -53,8 +53,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'SU-MA-DO'
-copyright = '2016, Castaño Ezequiel'
-author = 'Castaño Ezequiel'
+copyright = u'2016, Castaño Ezequiel'
+author = u'Castaño Ezequiel'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

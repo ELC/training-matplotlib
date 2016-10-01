@@ -1,8 +1,13 @@
 language: python
 python:
+        - "2.7"
+        - "2.7.12"
+        - "pypy"
         - "3.3"
         - "3.4"
         - "3.5"
+        - "3.5"
+        - "nightly"
 
 install: pip install -r requirements.txt
 script:
@@ -10,4 +15,4 @@ script:
 - travis-sphinx build
 
 after_success:
-    - travis-sphinx deploy
+    - travis-sphinx --branches=master deploy

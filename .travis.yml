@@ -7,7 +7,4 @@ python:
 install: pip install -r requirements.txt
 script:
 - py.test ./Freelance/SU-MA-DO/test_unittest.py
-- travis-sphinx build
-
-after_success:
-    - travis-sphinx deploy
+- wget https://raw.githubusercontent.com/teracyhq/sphinx-deployment/develop/scripts/spxd.sh && chmod +x ./spxd.sh && ./spxd.sh -p ./docs

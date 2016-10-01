@@ -52,6 +52,7 @@ integers and poligons as tuples
 from random import shuffle
 import itertools
 from adjacency_lists import get_adj_list
+import json
 
 
 def main(adj_id, vertex_list=None, adj_list=None):
@@ -75,8 +76,11 @@ def main(adj_id, vertex_list=None, adj_list=None):
         vertex_list = initList(adj_list_len)
         
     
-    listofpoligons = generatePoligons(vertex_list, poligon_vertexes)
-    return listofpoligons
+    poligons_list = generatePoligons(vertex_list, poligon_vertexes)
+    
+    output_raw = {"vertexes": vertex_list, "poligons": poligons_list}
+    output = json.dumps(output_raw)
+    return output
     
 
 def get_poligon_vertexes(adj_list):

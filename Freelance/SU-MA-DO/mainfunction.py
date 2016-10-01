@@ -188,7 +188,8 @@ def shortestpath(pair_parent, parents):
         adj: dictionary with the adjacency list of a graph
     """
     start, end, vertex = pair_parent
-    path = {vertex}
+    path = set()
+    path.add(vertex)
     nextnode = start
     path |= {nextnode}
     while nextnode != end:

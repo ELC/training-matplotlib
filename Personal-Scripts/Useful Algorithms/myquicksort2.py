@@ -19,9 +19,7 @@ def myquicksort2(iterable, first=1, last=-10):
         else:
             iterable[first], iterable[last] = iterable[last], iterable[first]
     iterable[0], iterable[last] = iterable[last], iterable[0]
-    a = iterable[last + 1:]
     myquicksort(iterable)
-    a = iterable[:last]
     myquicksort(iterable[:last])
 
 

@@ -16,7 +16,7 @@ class Deck(object):
     
     def load_deck(self,cards_number):
         """Add as many cards to the deck as the number given"""
-        for i in range(cards_number):
+        for _ in range(cards_number):
             self.add_card()
     
     def add_card(self):
@@ -58,7 +58,7 @@ class Card(object):
 def main():
     """Print B if a given deck is correctly shuffled, M otherwise."""
     testsnumber = int(input())
-    for i in range(testsnumber):
+    for _ in range(testsnumber):
         new_deck = Deck()
         if new_deck.shuffled:
             print("B")

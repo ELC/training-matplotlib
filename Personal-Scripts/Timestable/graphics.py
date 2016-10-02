@@ -8,7 +8,8 @@ xs = [a[0]]
 ys = [a[1]]
 last = ys[0]
 
-def animate(i):
+
+def animate():
     a = change.stuff()[-1]
     xs.append(a[0])
     ys.append(a[1])
@@ -17,6 +18,6 @@ def animate(i):
 
 style.use('fivethirtyeight')
 fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
+ax1 = fig.add_subplot(1, 1, 1)
 ani = animation.FuncAnimation(fig, animate, interval=100)
 plt.show()

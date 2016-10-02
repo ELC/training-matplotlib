@@ -116,7 +116,7 @@ def get_pairs(base_list):
     for a, b in itertools.combinations(base_list, 2):
         if a not in pairs:
             pairs[a] = []
-            pairs[a].append(b)
+        pairs[a].append(b)
     return pairs
 
 

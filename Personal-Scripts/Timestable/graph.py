@@ -694,7 +694,7 @@ class Text(GraphicsObject):
 
     def setFace(self, face):
         if face in ['helvetica', 'arial', 'courier', 'times roman']:
-            f, s, b = self.config['font']
+            _, s, b = self.config['font']
             self._reconfig("font", (face, s, b))
         else:
             raise GraphicsError(BAD_OPTION)
@@ -875,7 +875,7 @@ class Image(GraphicsObject):
 
         """
 
-        path, name = os.path.split(filename)
+        _, name = os.path.split(filename)
         ext = name.split(".")[-1]
         self.img.write(filename, format=ext)
 

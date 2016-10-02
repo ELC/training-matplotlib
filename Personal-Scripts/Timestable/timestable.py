@@ -80,7 +80,7 @@ def setlines(points,timestable):
 
 
 def drawlines(win, lines):
-    for j, i in enumerate(lines):
+    for i in lines:
         i.draw(win)
 
 

@@ -1,4 +1,4 @@
-import random
+﻿import random
 from time import time as pc
 
 
@@ -20,8 +20,6 @@ def myquicksort2(iterable, first=1, last=-10):
             iterable[first], iterable[last] = iterable[last], iterable[first]
     iterable[0], iterable[last] = iterable[last], iterable[0]
     a = iterable[last + 1:]
-    indexmin = iterable.index(a[0])
-    indexmax = iterable.index(a[-1])
     myquicksort(iterable)
     a = iterable[:last]
     indexmin = iterable.index(a[0])

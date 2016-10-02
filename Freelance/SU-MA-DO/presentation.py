@@ -3,12 +3,6 @@ from adjacency_lists import get_adj_list
 import timeit
 import json
 
-"""
-
-Testing
-
-"""
-
 
 def testing():
     def getinfofromrel(reltype):
@@ -45,15 +39,15 @@ def testing():
 
     def printhead():
         nodes, edges = getinfofromrel(typerel)
-        print("\nTest for", i
-              , "\n Number of Nodes:", nodes
-              , "\n Number of Edges:", edges
-              , "\n Total parts:", nodes + edges)
+        print("\nTest for", i,
+              "\n Number of Nodes:", nodes,
+              "\n Number of Edges:", edges,
+              "\n Total parts:", nodes + edges)
 
     def printfooter():
-        print(" Time in microseconds: ", ttime
-              , "\n Difference with first:", difference
-              , "\n Pass = ", passed
+        print(" Time in microseconds: ", ttime,
+              "\n Difference with first:", difference,
+              "\n Pass = ", passed
               )
 
     def test(reltype):
@@ -89,20 +83,19 @@ def testing():
 
     relativetime = []
     passes = []
-    
+
     totaltime = []
-    
+
     for i in sorted(testcases):
         typerel = i[0]
 
         printhead()
-        
 
         inputtest = testcases[i][0]
         result, ttime, difference = test(typerel)
-        
+
         totaltime.append(ttime)
-        
+
         expectedoutput = testcases[i][1]
         passed = result == expectedoutput
         passes.append(passed)
@@ -116,4 +109,3 @@ def testing():
 
 if __name__ == "__main__":
     testing()
-

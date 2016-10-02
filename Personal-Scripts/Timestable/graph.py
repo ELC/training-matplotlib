@@ -1,5 +1,5 @@
 # graphics.py
-"""Simple object oriented graphics library  
+"""Simple object oriented graphics library
 
 The library is designed to make it very easy for novice programmers to
 experiment with computer graphics in an object oriented fashion. It is
@@ -63,7 +63,8 @@ http://mcsp.wartburg.edu/zelle/python for a quick reference"""
 __version__ = "4.3"
 
 # Version 4.3 4/25/2014
-#     * Fixed Image getPixel to work with Python 3.4, TK 8.6 (tuple type handling)
+#     * Fixed Image getPixel to work with Python 3.4, TK 8.6 (tuple type
+#       handling)
 #     * Added interactive keyboard input (getKey and checkKey) to GraphWin
 #     * Modified setCoords to cause redraw of current objects, thus
 #       changing the view. This supports scrolling around via setCoords.

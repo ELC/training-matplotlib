@@ -22,8 +22,6 @@ def myquicksort2(iterable, first=1, last=-10):
     a = iterable[last + 1:]
     myquicksort(iterable)
     a = iterable[:last]
-    indexmin = iterable.index(a[0])
-    indexmax = iterable.index(a[-1])
     myquicksort(iterable[:last])
 
 

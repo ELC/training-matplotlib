@@ -160,8 +160,8 @@ def cocktailbubble(iterable):
     l = len(iterable) - 1
     while d * 2 < l:
         a = range(d, l - d)
-        b = range(l - d, d, -1)
-        for i, j in zip(a, b):
+        bare = range(l - d, d, -1)
+        for i, j in zip(a, bare):
             if iterable[i] > iterable[i + 1]:
                 iterable[i], iterable[i + 1] = \
                     iterable[i + 1], iterable[i]

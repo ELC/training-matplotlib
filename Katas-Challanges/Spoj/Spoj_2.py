@@ -1,7 +1,7 @@
 import timeit
 
 
-def isprime(a, s):
+def isprime(a):
     b = 2
     g = a ** 0.5
     while b <= g:

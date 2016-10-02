@@ -1,7 +1,8 @@
-from graph import *
+import graph
 import math
 import time
 import numpy as np
+
 
 def main():
     win = SetGraphicwindow()
@@ -10,7 +11,7 @@ def main():
 
 
 def SetGraphicwindow():
-    win = GraphWin('Face', 1080, 1080, autoflush=False)
+    win = graph.GraphWin('Face', 1080, 1080, autoflush=False)
     win.setBackground("white")
     setmargins(win)
     drawborder(win)
@@ -23,7 +24,7 @@ def setmargins(win):
 
 
 def drawborder(win):
-    crl = Circle(Point(0, 0), 6)
+    crl = graph.Circle(graph.Point(0, 0), 6)
     crl.setWidth(2)
     crl.draw(win)
 
@@ -35,7 +36,7 @@ def drawtimetable(win):
     finalvalue = 300
     for i in np.arange(initialvalue, finalvalue + 1.5, 1):
         string = "Valor: " + str(i)
-        text = Text(Point(5, 5), string)
+        text = graph.Text(graph.Point(5, 5), string)
         text.draw(win)
         lines = setlines(points, i)
         drawlines(win, lines)
@@ -65,15 +66,15 @@ def GetCoordinates(a):
 
 def SetPoints(numberofsides):
     coordinates = GetCoordinates(numberofsides)
-    return [Point(a, b) for (a, b) in coordinates]
+    return [graph.Point(a, b) for (a, b) in coordinates]
 
 
-def setlines(points,timestable):
+def setlines(points, timestable):
     mod = len(points)
     lines = []
     for j, i in enumerate(points):
         index = int((j * timestable) % mod)
-        lines.append(Line(i, points[index]))
+        lines.append(graph.Line(i, points[index]))
     for i in lines:
         i.setWidth(1)
     return lines
@@ -88,6 +89,4 @@ def CloseGraphiccwindow(win):
     win.getMouse()
     win.close()
 
-    
 main()
-

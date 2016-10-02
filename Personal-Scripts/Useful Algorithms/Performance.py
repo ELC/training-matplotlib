@@ -1,12 +1,14 @@
 from time import time
 
-def helper(func,*arg):
+
+def helper(func, *arg):
     start = time()
     func(*arg)
-    total = round(time()-start,5)*100
+    total = round(time()-start, 5)*100
     return total
 
-def testPerformance(arg,*funcs):
+
+def testPerformance(arg, *funcs):
     """
     First parameter is a tuple with all the arguments for each function
     Each function should take the same amount of parameters in the
@@ -15,10 +17,8 @@ def testPerformance(arg,*funcs):
     """
     times = []
     for func in funcs:
-        times.append(helper(func,*arg))
+        times.append(helper(func, *arg))
     minimum = min(times)
     sustractivetimes = [i - minimum for i in times]
-    result = {i:j for i,j in zip(funcs ,sustractivetimes)}
+    result = {i: j for i, j in zip(funcs, sustractivetimes)}
     return result
-
-testPerformance()

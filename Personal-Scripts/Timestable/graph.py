@@ -1,5 +1,5 @@
 # graphics.py
-"""Simple object oriented graphics library  
+"""Simple object oriented graphics library
 
 The library is designed to make it very easy for novice programmers to
 experiment with computer graphics in an object oriented fashion. It is
@@ -60,10 +60,13 @@ Programming: An Introduction to Computer Science" by John Zelle,
 published by Franklin, Beedle & Associates.  Also see
 http://mcsp.wartburg.edu/zelle/python for a quick reference"""
 
+import time
+import os
 __version__ = "4.3"
 
 # Version 4.3 4/25/2014
-#     * Fixed Image getPixel to work with Python 3.4, TK 8.6 (tuple type handling)
+#     * Fixed Image getPixel to work with Python 3.4, TK 8.6 (tuple type
+#       handling)
 #     * Added interactive keyboard input (getKey and checkKey) to GraphWin
 #     * Modified setCoords to cause redraw of current objects, thus
 #       changing the view. This supports scrolling around via setCoords.
@@ -153,11 +156,10 @@ __version__ = "4.3"
 #     Added ability to set text atttributes.
 #     Added Entry boxes.
 
-import time, os, sys
 
 try:  # import as appropriate for 2.x vs. 3.x
     import tkinter as tk
-except:
+except ImportError:
     import Tkinter as tk
 
 
@@ -537,7 +539,7 @@ class _BBox(GraphicsObject):
     # Internal base class for objects represented by bounding box
     # (opposite corners) Line segment is a degenerate case.
 
-    def __init__(self, p1, p2, options=["outline", "width", "fill"]):
+    def __init__(self, p1, p2, options=("outline", "width", "fill")):
         GraphicsObject.__init__(self, options)
         self.p1 = p1.clone()
         self.p2 = p2.clone()
@@ -694,7 +696,7 @@ class Text(GraphicsObject):
 
     def setFace(self, face):
         if face in ['helvetica', 'arial', 'courier', 'times roman']:
-            f, s, b = self.config['font']
+            _, s, b = self.config['font']
             self._reconfig("font", (face, s, b))
         else:
             raise GraphicsError(BAD_OPTION)
@@ -875,7 +877,7 @@ class Image(GraphicsObject):
 
         """
 
-        path, name = os.path.split(filename)
+        _, name = os.path.split(filename)
         ext = name.split(".")[-1]
         self.img.write(filename, format=ext)
 

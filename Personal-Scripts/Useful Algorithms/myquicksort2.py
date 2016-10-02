@@ -242,8 +242,8 @@ def mostrar(n=100, v=False):
         slo.append(index[time.index(max(time))])
         if v:
             print("El más rápido fue: ", rap[j])
-    print("\nEl top 3 es : \n {0[0]}\n {0[1]}\n {0[2]}".format(rap))
+    print("\nEl top 3 es : \n {a[0]}\n {a[1]}\n {a[2]}".format(a=rap))
     print(
-        "\nLos 3 más lentos fueron : \n {0[0]}\n {0[1]}\n {0[2]}".format(slo))
+        "\nLos 3 más lentos fueron : \n {a[0]}\n {a[1]}\n {a[2]}".format(a = slo))
 
 # mostrar(100, True)

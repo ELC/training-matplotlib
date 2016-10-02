@@ -3,12 +3,13 @@ import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 from matplotlib import style
 
-a = change.init()
-xs = [a[0]]
-ys = [a[1]]
-last = ys[0]
+A = change.init()
+XS = [a[0]]
+YS = [a[1]]
+LAST = ys[0]
 
-def animate(i):
+
+def animate():
     a = change.stuff()[-1]
     xs.append(a[0])
     ys.append(a[1])
@@ -16,7 +17,7 @@ def animate(i):
     ax1.plot(xs, ys)
 
 style.use('fivethirtyeight')
-fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
-ani = animation.FuncAnimation(fig, animate, interval=100)
+FIG = plt.figure()
+AX1 = fig.add_subplot(1, 1, 1)
+ANI = animation.FuncAnimation(fig, animate, interval=100)
 plt.show()

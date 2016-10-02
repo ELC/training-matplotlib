@@ -1,2 +1,2 @@
-Sphinx==1.4.6
+Sphinx==1.4.8
 travis-sphinx == 1.4.2

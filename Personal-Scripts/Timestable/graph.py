@@ -60,6 +60,8 @@ Programming: An Introduction to Computer Science" by John Zelle,
 published by Franklin, Beedle & Associates.  Also see
 http://mcsp.wartburg.edu/zelle/python for a quick reference"""
 
+import time
+import os
 __version__ = "4.3"
 
 # Version 4.3 4/25/2014
@@ -154,7 +156,6 @@ __version__ = "4.3"
 #     Added ability to set text atttributes.
 #     Added Entry boxes.
 
-import time, os, sys
 
 try:  # import as appropriate for 2.x vs. 3.x
     import tkinter as tk

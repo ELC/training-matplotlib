@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Training-Python documentation build configuration file, created by
-# sphinx-quickstart on Mon Oct  3 12:24:16 2016.
+# sphinx-quickstart on Mon Oct  3 12:34:48 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -19,7 +19,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 # -- General configuration ------------------------------------------------
 

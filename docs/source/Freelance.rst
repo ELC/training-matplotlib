@@ -6,7 +6,7 @@ Subpackages
 
 .. toctree::
 
-    Freelance.SU-MA-DO
+    Freelance.sumado
 
 Module contents
 ---------------

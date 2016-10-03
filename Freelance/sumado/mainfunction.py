@@ -9,49 +9,49 @@ input it would be randomly generated.
 The Glosary for understanding this program is the following:
     Adjacency List: A data structure that represent a graph with the following
     format: `vertex : neighbour_vertexes
-        Example:
-            1: 2,4,5
-            2: 1,3,5
-            3: 2,6
-            4: 1,5
-            5: 1,2,4,6
-            6: 3,5
+    Example:
+    1: 2,4,5
+    2: 1,3,5
+    3: 2,6
+    4: 1,5
+    5: 1,2,4,6
+    6: 3,5
 
     Vertex: Equivalent to node in graph theory
 
     Cycle: Equivalent to cycle in graph theory
-        Example: 1: 2
-                 2: 3
-                 3: 4
-                 4: 3
-        Cycle = (1,2,3,4,1)
+    Example: 1: 2
+    2: 3
+    3: 4
+    4: 3
+    Cycle = (1,2,3,4,1)
 
     Supercycle: A Cycle whose vertexes are part of another cycle
-        Example: 1:2
-                 2:3
-                 3:4
-                 4:1,2
-        Cycle = (1,2,3,4,1)
-        Subcycle = (2,3,4,2)
+    Example: 1:2
+    2:3
+    3:4
+    4:1,2
+    Cycle = (1,2,3,4,1)
+    Subcycle = (2,3,4,2)
 
     Elementary Cycle: A cycle with no subcycles
-        Example: 1: 2
-                 2: 3
-                 3: 4
-                 4: 3
-        Cycle = (1,2,3,4,1)
+    Example: 1: 2
+    2: 3
+    3: 4
+    4: 3
+    Cycle = (1,2,3,4,1)
 
     Poligon: An Elementary Cycle with no repeated vertexes. Two Poligons are
     equal if they have the same vertexes.
 
-In this program Adjacency List are represented as dictionaries, vertexes as
-integers and poligons as tuples
+    In this program Adjacency List are represented as dictionaries, vertexes as
+    integers and poligons as tuples
 """
 
 
+from sumado import adjacency_list.get_adj_list
 from random import shuffle
 import itertools
-from adjacency_lists import get_adj_list
 import json
 
 

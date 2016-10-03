@@ -11,11 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. currentmodule:: Freelance.SU-MA-DO.mainfunction
-.. autofunction:: main
-
-.. automodule:: Freelance.SU-MA-DO.mainfunction
-      :members:
+   SU-MA-DO
 
 Indices and tables
 ==================

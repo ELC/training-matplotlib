@@ -49,7 +49,7 @@ The Glosary for understanding this program is the following:
 """
 
 
-from Freelance.sumado.adjacency_list import get_adj_list
+from Freelance.sumado.adjacency_lists import get_adj_list
 from random import shuffle
 import itertools
 import json

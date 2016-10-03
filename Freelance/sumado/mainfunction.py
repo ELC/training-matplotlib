@@ -62,7 +62,7 @@ def main(adj_id, vertex_list=None, adj_list=None):
         adj_id: ID for retriving stored the adjacency list.
         vertex_list: List of values for the vertexes, reserved for testing
         adj_list: Explicit Adjacency List, use in case the one needed isn't
-            stored
+        stored
     """
 
     if adj_list is None:

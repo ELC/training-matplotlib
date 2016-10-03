@@ -52,7 +52,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'SU-MA-DO'
+project = 'Training Python'
 copyright = u'2016, Castaño Ezequiel'
 author = u'Castaño Ezequiel'
 

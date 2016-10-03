@@ -7,7 +7,7 @@ vertexes are the numbers inside the "vertexes", if it isn't passed as an
 input it would be randomly generated.
 
 The Glosary for understanding this program is the following:
-    Adjacency List: A data structure that represent a graph with the following 
+    Adjacency List: A data structure that represent a graph with the following
     format: `vertex`: neighbour_vertexes
     Example:
     1: 2,4,5
@@ -152,9 +152,9 @@ def lookfor_parents(pair_parent, adj):
 
     Args:
         pair_parent: a tuple pack with `start`, `omit` and `final`
-            start: initial node
-            omit: node that cannot be parent of any other node
-            final: node that stops the execution
+        start initial node
+        omit: node that cannot be parent of any other node
+        final: node that stops the execution
         adj: dictionary with the adjacency list of a graph
     """
     final, start, omit = pair_parent
@@ -184,9 +184,9 @@ def shortestpath(pair_parent, parents):
 
     Args:
         pair_parent: a tuple pack with `start`, `omit` and `final`
-            start: initial node
-            omit: node that cannot be parent of any other node
-            final: node that stops the execution
+        start: initial node
+        omit: node that cannot be parent of any other node
+        final: node that stops the execution
         adj: dictionary with the adjacency list of a graph
     """
     start, end, vertex = pair_parent

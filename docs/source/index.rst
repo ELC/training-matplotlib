@@ -14,6 +14,8 @@ Contents:
 .. currentmodule:: Freelance.SU-MA-DO.mainfunction
 .. autofunction:: main
 
+.. automodule:: Freelance.SU-MA-DO.mainfunction
+      :members:
 
 Indices and tables
 ==================

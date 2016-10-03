@@ -1,17 +1,17 @@
-.. Freelance documentation master file, created by
-   sphinx-quickstart on Mon Oct  3 12:19:09 2016.
+.. Training-Python documentation master file, created by
+   sphinx-quickstart on Mon Oct  3 12:24:16 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Freelance's documentation!
-=====================================
+Welcome to Training-Python's documentation!
+===========================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 4
 
-   SU-MA-DO
+   Freelance
 
 
 Indices and tables

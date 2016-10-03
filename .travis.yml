@@ -15,4 +15,4 @@ script:
 - travis-sphinx build
 
 after_success:
-    - travis-sphinx --branches=master deploy
+    - travis-sphinx --branches=master,Code-Fixes deploy

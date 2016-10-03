@@ -1,5 +1,5 @@
 .. Training-Python documentation master file, created by
-   sphinx-quickstart on Mon Oct  3 12:34:48 2016.
+   sphinx-quickstart on Mon Oct  3 17:14:59 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -12,6 +12,9 @@ Contents:
    :maxdepth: 4
 
    Freelance
+   conf
+   katas_challanges
+   personal_scripts
 
 
 Indices and tables

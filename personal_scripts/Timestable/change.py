@@ -1,6 +1,6 @@
 import random
 
-import conf
+import personal_scripts.Timestable.conf
 
 random.seed()
 

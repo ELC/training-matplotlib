@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Training-Python documentation build configuration file, created by
-# sphinx-quickstart on Mon Oct  3 12:34:48 2016.
+# sphinx-quickstart on Mon Oct  3 17:05:53 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -17,9 +17,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../..'))
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
 

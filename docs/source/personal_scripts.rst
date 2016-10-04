@@ -6,10 +6,7 @@ Subpackages
 
 .. toctree::
 
-    personal_scripts.Algorithms
     personal_scripts.Fluent Python
-    personal_scripts.Timestable
-    personal_scripts.Useful Algorithms
 
 Module contents
 ---------------

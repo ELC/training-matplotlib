@@ -94,11 +94,3 @@ def insertion(iterable):
                         iterable[j + 1], iterable[j]
                     j -= 1
     return iterable
-
-
-def main():
-    return 0
-
-
-if __name__ == '__main__':
-    status = main()

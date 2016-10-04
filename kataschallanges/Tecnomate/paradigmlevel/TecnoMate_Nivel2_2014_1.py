@@ -67,6 +67,3 @@ def main():
             print("B")
         else:
             print("M")
-
-if __name__ == "__main__":
-    main()

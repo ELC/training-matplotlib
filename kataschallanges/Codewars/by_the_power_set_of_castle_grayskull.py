@@ -4,6 +4,3 @@ def power(s):
         for i in range(j,len(s)):
             r.append(s[j:i])
     print([i for i in r ])
-
-
-power([1,2,3])

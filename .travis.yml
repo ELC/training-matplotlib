@@ -11,8 +11,8 @@ python:
 
 install: pip install -r requirements.txt
 script:
-- py.test ./Freelance/SU-MA-DO/test_unittest.py
+- py.test ./Freelance/sumado/test_unittest.py
 - travis-sphinx build
 
 after_success:
-    - travis-sphinx --branches=master deploy
+    - travis-sphinx --branches=master,Code-Fixes deploy

@@ -1,6 +1,13 @@
 kataschallanges package
 =======================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    kataschallanges.Codewars
+
 Module contents
 ---------------
 

@@ -1,8 +1,8 @@
-personalscripts package
-=======================
+Personal Scripts
+================
 
-Subpackages
------------
+Projects
+--------
 
 .. toctree::
 
@@ -10,8 +10,8 @@ Subpackages
     personalscripts.fluentpython
     personalscripts.ownalgorithms
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: personalscripts
     :members:

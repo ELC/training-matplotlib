@@ -1,15 +1,15 @@
-Freelance package
-=================
+Freelance Work
+==============
 
-Subpackages
------------
+Projects
+--------
 
 .. toctree::
 
    Freelance.sumado
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: Freelance
     :members:

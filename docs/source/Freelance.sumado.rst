@@ -1,35 +1,35 @@
-Freelance.sumado package
-========================
+SU-MA-DO
+========
 
-Submodules
-----------
+Modules
+-------
 
-Freelance.sumado.adjacency_lists module
----------------------------------------
+Adjacency_lists module
+----------------------
 
 .. automodule:: Freelance.sumado.adjacency_lists
     :members:
     :undoc-members:
     :show-inheritance:
 
-Freelance.sumado.mainfunction module
-------------------------------------
+Mainfunction module
+-------------------
 
 .. automodule:: Freelance.sumado.mainfunction
     :members:
     :undoc-members:
     :show-inheritance:
 
-Freelance.sumado.presentation module
-------------------------------------
+Presentation module
+-------------------
 
 .. automodule:: Freelance.sumado.presentation
     :members:
     :undoc-members:
     :show-inheritance:
 
-Freelance.sumado.test_unittest module
--------------------------------------
+Tests module
+------------
 
 .. automodule:: Freelance.sumado.test_unittest
     :members:
@@ -37,8 +37,8 @@ Freelance.sumado.test_unittest module
     :show-inheritance:
 
 
-Module contents
----------------
+Project Description
+-------------------
 
 .. automodule:: Freelance.sumado
     :members:

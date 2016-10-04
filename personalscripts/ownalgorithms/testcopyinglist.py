@@ -8,11 +8,10 @@ def semievenprimes():
             yield n
         n += 1
 
-
-cosa = semievenprimes()
-primes = []
-for i in range(100):
-    nextnumber = next(cosa)
-    primes.append(nextnumber)
-
-print(primes)
+def main():
+    cosa = semievenprimes()
+    primes = []
+    for i in range(100):
+        nextnumber = next(cosa)
+        primes.append(nextnumber)
+    print(primes)

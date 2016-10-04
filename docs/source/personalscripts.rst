@@ -6,7 +6,7 @@ Subpackages
 
 .. toctree::
 
-    personalscripts.Fluent Python
+    personalscripts.fluentpython
 
 Module contents
 ---------------

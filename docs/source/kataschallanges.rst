@@ -1,13 +1,6 @@
 kataschallanges package
 =======================
 
-Subpackages
------------
-
-.. toctree::
-
-    kataschallanges.Tecnomate
-
 Module contents
 ---------------
 

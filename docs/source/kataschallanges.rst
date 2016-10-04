@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     kataschallanges.Codewars
+    kataschallanges.Spoj
     kataschallanges.Tecnomate
 
 Module contents

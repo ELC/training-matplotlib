@@ -1,17 +1,17 @@
-kataschallanges package
-=======================
+Katas and Challanges
+====================
 
-Subpackages
------------
+Projects
+--------
 
 .. toctree::
-    :maxdepth: 1
+
     kataschallanges.Codewars
     kataschallanges.Spoj
     kataschallanges.Tecnomate
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: kataschallanges
     :members:

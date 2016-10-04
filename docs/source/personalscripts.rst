@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-
+    :maxdepth: 1
     personalscripts.Algorithms
     personalscripts.fluentpython
     personalscripts.ownalgorithms

@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-
+    :maxdepth: 1
     kataschallanges.Codewars
     kataschallanges.Spoj
     kataschallanges.Tecnomate

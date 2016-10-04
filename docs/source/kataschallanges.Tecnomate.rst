@@ -6,7 +6,7 @@ Subpackages
 
 .. toctree::
 
-    kataschallanges.Tecnomate.2014
+    kataschallanges.Tecnomate.paradigmlevel
 
 Module contents
 ---------------

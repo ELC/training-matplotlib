@@ -1,4 +1,4 @@
-import graph
+import personalscripts.Timestable.graph
 import math
 import time
 import numpy as np

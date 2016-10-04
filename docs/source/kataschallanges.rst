@@ -1,17 +1,17 @@
-personal_scripts package
-========================
+kataschallanges package
+=======================
 
 Subpackages
 -----------
 
 .. toctree::
 
-    personal_scripts.Fluent Python
+    kataschallanges.Tecnomate
 
 Module contents
 ---------------
 
-.. automodule:: personal_scripts
+.. automodule:: kataschallanges
     :members:
     :undoc-members:
     :show-inheritance:

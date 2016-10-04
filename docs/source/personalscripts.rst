@@ -1,17 +1,17 @@
-katas_challanges package
-========================
+personalscripts package
+=======================
 
 Subpackages
 -----------
 
 .. toctree::
 
-    katas_challanges.Tecnomate
+    personalscripts.Fluent Python
 
 Module contents
 ---------------
 
-.. automodule:: katas_challanges
+.. automodule:: personalscripts
     :members:
     :undoc-members:
     :show-inheritance:

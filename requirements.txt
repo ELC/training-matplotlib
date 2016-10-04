@@ -1,3 +1,2 @@
 Sphinx==1.4.8
 travis-sphinx == 1.4.2
-matplotlib == 1.5.3

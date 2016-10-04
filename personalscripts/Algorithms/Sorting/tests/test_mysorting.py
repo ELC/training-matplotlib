@@ -1,6 +1,6 @@
-from personal_scripts.Algorithms.Sorting.tests.testconf import per, a
+from personalscripts.Algorithms.Sorting.tests.testconf import per, a
 
-import personal_scripts.Algorithms.Sorting.App.mysortings as my
+import personalscripts.Algorithms.Sorting.App.mysortings as my
 
 
 def test_bubbleoriginal():

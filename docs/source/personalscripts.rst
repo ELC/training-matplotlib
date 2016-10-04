@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     personalscripts.fluentpython
+    personalscripts.ownalgorithms
 
 Module contents
 ---------------

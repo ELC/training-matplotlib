@@ -5,8 +5,8 @@ Subpackages
 -----------
 
 .. toctree::
-    :maxdepth: 1
-    Freelance.sumado
+   :maxdepth: 1
+   Freelance.sumado
 
 Module contents
 ---------------

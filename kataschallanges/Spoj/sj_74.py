@@ -18,5 +18,6 @@ def divider(a):
     else:
         return tes(a, 3, 2)
 
-for i in range(int(input())):
-    print(divider(int(input())))
+def main():
+    for i in range(int(input())):
+        print(divider(int(input())))

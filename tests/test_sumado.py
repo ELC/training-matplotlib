@@ -2,9 +2,9 @@ import unittest
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../projects/sumado'))
+sys.path.insert(0, os.path.abspath('../../'))
 
-import mainfunction as main
+import projects.sumado.mainfunction as main
 
 class TestMainFunction(unittest.TestCase):
 

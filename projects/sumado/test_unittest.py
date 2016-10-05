@@ -1,4 +1,4 @@
-from Freelance.sumado import mainfunction
+from sumado import mainfunction
 import unittest
 
 

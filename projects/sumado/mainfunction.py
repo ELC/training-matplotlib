@@ -49,7 +49,7 @@ The Glosary for understanding this program is the following:
 """
 
 
-from Freelance.sumado.adjacency_lists import get_adj_list
+import sumado.adjacency_lists as adjacency_lists
 from random import shuffle
 import itertools
 import json
@@ -66,7 +66,7 @@ def main(adj_id, vertex_list=None, adj_list=None):
     """
 
     if adj_list is None:
-        adj_list = get_adj_list(adj_id)
+        adj_list = adjacency_lists.get_adj_list(adj_id)
 
     poligon_vertexes = get_poligon_vertexes(adj_list)
 

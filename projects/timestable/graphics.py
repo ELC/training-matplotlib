@@ -1,4 +1,4 @@
-import personalscripts.Timestable.change
+import timestable.change
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 from matplotlib import style

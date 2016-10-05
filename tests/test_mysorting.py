@@ -39,29 +39,9 @@ def test_cocktailselection():
         assert my.cocktailselection(list(i)) == a
 
 
-def test_gnome():
-    for i in per():
-        assert my.gnome(list(i)) == a
-
-
 def test_insertion():
     for i in per():
         assert my.insertion(list(i)) == a
-
-
-def test_myquicksortinternet():
-    for i in per():
-        assert my.myquicksortinternet(list(i)) == a
-
-
-def test_myquicksortmejorado():
-    for i in per():
-        assert my.myquicksortmejorado(list(i)) == a
-
-
-def test_myquicksortslice():
-    for i in per():
-        assert my.myquicksortslice(list(i)) == a
 
 
 def test_selection():

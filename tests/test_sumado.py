@@ -1,4 +1,4 @@
-from .context.sumado import mainfunction as main
+from context.sumado import mainfunction as main
 import unittest
 
 

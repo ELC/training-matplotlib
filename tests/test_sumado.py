@@ -1,5 +1,10 @@
 import unittest
-import tests.context.sumado.mainfunction as main
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../projects'))
+
+import sumado.mainfunction as main
 
 class TestMainFunction(unittest.TestCase):
 

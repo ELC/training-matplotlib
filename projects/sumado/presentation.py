@@ -1,5 +1,5 @@
 from sumado import mainfunction
-from sumado.adjacency_lists import get_adj_list
+from sumado.mainfunction import get_adj_list
 import timeit
 import json
 

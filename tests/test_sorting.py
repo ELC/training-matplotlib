@@ -8,7 +8,7 @@ permutations = itertools.permutations(expected,5)
 per = [list(i) for i in permutations]
 
 class TestMainFunction(unittest.TestCase):
-"""Testing for every sorting algorithm"""
+    """Testing for every sorting algorithm"""
 
     def test_bubble_original():
         for i in per:

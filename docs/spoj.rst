@@ -1,27 +1,27 @@
-spoj package
-============
+Spoj Challanges
+===============
 
-Submodules
-----------
+Exercise
+--------
 
-spoj.sj_1 module
-----------------
+Nro 1
+-----
 
 .. automodule:: spoj.sj_1
     :members:
     :undoc-members:
     :show-inheritance:
 
-spoj.sj_2 module
-----------------
+Nro 2
+-----
 
 .. automodule:: spoj.sj_2
     :members:
     :undoc-members:
     :show-inheritance:
 
-spoj.sj_74 module
------------------
+Nro 74
+------
 
 .. automodule:: spoj.sj_74
     :members:
@@ -29,8 +29,8 @@ spoj.sj_74 module
     :show-inheritance:
 
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: spoj
     :members:

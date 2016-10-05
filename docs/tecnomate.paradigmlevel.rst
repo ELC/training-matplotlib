@@ -1,11 +1,11 @@
-tecnomate.paradigmlevel package
-===============================
+Paradigm Level
+==============
 
-Submodules
+Exercises
+---------
+
+2014 Nro 1
 ----------
-
-tecnomate.paradigmlevel.TecnoMate_Nivel2_2014_1 module
-------------------------------------------------------
 
 .. automodule:: tecnomate.paradigmlevel.TecnoMate_Nivel2_2014_1
     :members:
@@ -13,8 +13,8 @@ tecnomate.paradigmlevel.TecnoMate_Nivel2_2014_1 module
     :show-inheritance:
 
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: tecnomate.paradigmlevel
     :members:

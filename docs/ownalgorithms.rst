@@ -1,19 +1,19 @@
-ownalgorithms package
-=====================
+Own Algorithms
+==============
 
 Submodules
 ----------
 
-ownalgorithms.Performance module
---------------------------------
+Function Performance
+--------------------
 
 .. automodule:: ownalgorithms.Performance
     :members:
     :undoc-members:
     :show-inheritance:
 
-ownalgorithms.testcopyinglist module
-------------------------------------
+Test Copying List
+-----------------
 
 .. automodule:: ownalgorithms.testcopyinglist
     :members:
@@ -21,8 +21,8 @@ ownalgorithms.testcopyinglist module
     :show-inheritance:
 
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: ownalgorithms
     :members:

@@ -1,15 +1,15 @@
-tecnomate package
-=================
+Tecnomate Exercises
+===================
 
-Subpackages
------------
+Levels
+------
 
 .. toctree::
 
     tecnomate.paradigmlevel
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: tecnomate
     :members:

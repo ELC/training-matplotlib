@@ -1,35 +1,35 @@
-sumado package
-==============
+SU-MA-DO
+========
 
-Submodules
-----------
+Modules
+-------
 
-sumado.adjacency_lists module
------------------------------
+Adjacency_lists
+---------------
 
 .. automodule:: sumado.adjacency_lists
     :members:
     :undoc-members:
     :show-inheritance:
 
-sumado.mainfunction module
---------------------------
+Mainfunction
+------------
 
 .. automodule:: sumado.mainfunction
     :members:
     :undoc-members:
     :show-inheritance:
 
-sumado.presentation module
---------------------------
+Presentation
+------------
 
 .. automodule:: sumado.presentation
     :members:
     :undoc-members:
     :show-inheritance:
 
-sumado.test_unittest module
----------------------------
+Tests
+-----
 
 .. automodule:: sumado.test_unittest
     :members:
@@ -37,8 +37,8 @@ sumado.test_unittest module
     :show-inheritance:
 
 
-Module contents
----------------
+Project Description
+-------------------
 
 .. automodule:: sumado
     :members:

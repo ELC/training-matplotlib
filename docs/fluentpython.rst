@@ -1,11 +1,11 @@
-fluentpython package
-====================
+Fluent Python
+=============
 
-Submodules
-----------
+Chapters
+--------
 
-fluentpython.Chapters_1_2 module
---------------------------------
+From 1 to 2
+-----------
 
 .. automodule:: fluentpython.Chapters_1_2
     :members:
@@ -13,8 +13,8 @@ fluentpython.Chapters_1_2 module
     :show-inheritance:
 
 
-Module contents
----------------
+Module Description
+------------------
 
 .. automodule:: fluentpython
     :members:

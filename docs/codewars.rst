@@ -1,27 +1,27 @@
-codewars package
-================
+Codewars Katas
+==============
 
-Submodules
-----------
+Katas
+-----
 
-codewars.by_the_power_set_of_castle_grayskull module
-----------------------------------------------------
+By the Power Set of Castle Grayskull
+------------------------------------
 
 .. automodule:: codewars.by_the_power_set_of_castle_grayskull
     :members:
     :undoc-members:
     :show-inheritance:
 
-codewars.reach_me_and_sum_my_digits module
-------------------------------------------
+Reach Me and Sum My Digits
+--------------------------
 
 .. automodule:: codewars.reach_me_and_sum_my_digits
     :members:
     :undoc-members:
     :show-inheritance:
 
-codewars.snail module
----------------------
+Snail
+-----
 
 .. automodule:: codewars.snail
     :members:
@@ -29,8 +29,8 @@ codewars.snail module
     :show-inheritance:
 
 
-Module contents
----------------
+Package Description
+-------------------
 
 .. automodule:: codewars
     :members:

@@ -1,6 +1,5 @@
-from context.sumado import mainfunction as main
 import unittest
-
+import tests.context.sumado.mainfunction as main
 
 class TestMainFunction(unittest.TestCase):
 

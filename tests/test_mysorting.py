@@ -1,6 +1,17 @@
-from algorithms.Sorting.tests.testconf import per, a
+import algorithms.Sorting.mysortings as my
+from random import shuffle, choice
 
-import algorithms.Sorting.App.mysortings as my
+
+n = 500
+a = [i for i in range(n)]
+LENGTH = 5
+c = [a[:] for _ in range(LENGTH)]
+for i in c:
+    shuffle(i)
+b = [choice(c) for _ in range(LENGTH)]
+
+def per():
+    return b
 
 
 def test_bubbleoriginal():

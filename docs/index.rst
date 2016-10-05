@@ -19,6 +19,7 @@ Contents:
    spoj
    sumado
    tecnomate
+   readme
 
 
 Indices and tables

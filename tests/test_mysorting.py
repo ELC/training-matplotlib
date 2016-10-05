@@ -1,5 +1,5 @@
 import context
-import algorithms.Sorting.mysortings as my´
+import algorithms.Sorting.mysortings as my
 from random import shuffle, choice
 
 n = 500

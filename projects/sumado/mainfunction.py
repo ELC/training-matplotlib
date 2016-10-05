@@ -50,6 +50,7 @@ The Glosary for understanding this program is the following:
 
 from random import shuffle
 import itertools
+import sumado.context as context
 import json
 
 
@@ -75,13 +76,10 @@ def main(adj_id, vertex_list=None, adj_list=None):
     poligons_list = generatePoligons(vertex_list, poligon_vertexes)
 
     output_raw = {"vertexes": vertex_list, "poligons": poligons_list}
-    output = json.dumps(output_raw)
-    return output
+    return json.dumps(output_raw )
 
 def get_adj_list(adj_id):
-    with open('adjacency_lists.json', 'r') as jsonfile:
-        json_data = jsonfile.read()
-    adjacency_lists = json.loads(json_data)
+    adjacency_lists = context.adjacency_lists 
     return adjacency_lists[adj_id]
 
 def get_poligon_vertexes(adj_list):

@@ -1,18 +1,13 @@
 algorithms.Sorting package
 ==========================
 
-Subpackages
------------
+Submodules
+----------
 
-.. toctree::
+algorithms.Sorting.mysortings module
+----------------------------------------
 
-    algorithms.Sorting.App
-    algorithms.Sorting.tests
-
-Module contents
----------------
-
-.. automodule:: algorithms.Sorting
+.. automodule:: algorithms.Sorting.mysortings
     :members:
     :undoc-members:
     :show-inheritance:

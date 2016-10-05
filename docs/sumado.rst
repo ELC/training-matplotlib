@@ -4,10 +4,17 @@ SU-MA-DO
 Modules
 -------
 
-Adjacency_lists
----------------
+Context
+-------
+.. automodule:: sumado.context
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-.. automodule:: sumado.adjacency_lists
+Adjacency Lists Creator
+-----------------------
+
+.. automodule:: sumado.create_adjacency_lists
     :members:
     :undoc-members:
     :show-inheritance:
@@ -24,14 +31,6 @@ Presentation
 ------------
 
 .. automodule:: sumado.presentation
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Tests
------
-
-.. automodule:: sumado.test_unittest
     :members:
     :undoc-members:
     :show-inheritance:

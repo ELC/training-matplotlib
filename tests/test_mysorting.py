@@ -1,6 +1,17 @@
-from algorithms.Sorting.tests.testconf import per, a
+import context
+import algorithms.Sorting.mysortings as my
+from random import shuffle, choice
 
-import algorithms.Sorting.App.mysortings as my
+n = 500
+a = [i for i in range(n)]
+LENGTH = 5
+c = [a[:] for _ in range(LENGTH)]
+for i in c:
+    shuffle(i)
+b = [choice(c) for _ in range(LENGTH)]
+
+def per():
+    return b
 
 
 def test_bubbleoriginal():
@@ -28,29 +39,9 @@ def test_cocktailselection():
         assert my.cocktailselection(list(i)) == a
 
 
-def test_gnome():
-    for i in per():
-        assert my.gnome(list(i)) == a
-
-
 def test_insertion():
     for i in per():
         assert my.insertion(list(i)) == a
-
-
-def test_myquicksortinternet():
-    for i in per():
-        assert my.myquicksortinternet(list(i)) == a
-
-
-def test_myquicksortmejorado():
-    for i in per():
-        assert my.myquicksortmejorado(list(i)) == a
-
-
-def test_myquicksortslice():
-    for i in per():
-        assert my.myquicksortslice(list(i)) == a
 
 
 def test_selection():

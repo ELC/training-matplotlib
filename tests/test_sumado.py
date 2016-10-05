@@ -1,6 +1,6 @@
-from sumado import mainfunction
 import unittest
-
+import context
+import sumado.mainfunction as main
 
 class TestMainFunction(unittest.TestCase):
 
@@ -11,7 +11,7 @@ class TestMainFunction(unittest.TestCase):
             2: [3, 4],
             3: [4]
             }
-        result = mainfunction.get_pairs(input_)
+        result = main.get_pairs(input_)
         self.assertEqual(result, output)
 
     def test_clean_vertex(self):
@@ -28,5 +28,5 @@ class TestMainFunction(unittest.TestCase):
             3: [1, 2],
             4: [1, 2, 3]
             }
-        mainfunction.clean_vertex(adj, vertex)
+        main.clean_vertex(adj, vertex)
         self.assertEqual(adj, output)

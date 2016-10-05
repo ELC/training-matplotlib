@@ -1,6 +1,6 @@
-import algorithms.Sorting.mysortings as my
-from random import shuffle, choice
 import context
+import algorithms.Sorting.mysortings as my´
+from random import shuffle, choice
 
 n = 500
 a = [i for i in range(n)]

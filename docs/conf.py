@@ -54,8 +54,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Training Python Projects'
-copyright = u'2016, Ezequiel Leonardo Castaño'
-author = u'Ezequiel Leonardo Castaño'
+copyright = r'2016, Ezequiel Leonardo Castaño'
+author = r'Ezequiel Leonardo Castaño'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

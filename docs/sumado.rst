@@ -35,14 +35,6 @@ Presentation
     :undoc-members:
     :show-inheritance:
 
-Tests
------
-
-.. automodule:: sumado.test_unittest
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Project Description
 -------------------

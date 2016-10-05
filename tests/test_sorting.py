@@ -3,13 +3,12 @@ import algorithms.Sorting as sort
 import unittest
 import itertools
 
+expected = [i for i in range(5)]
+permutations = itertools.permutations(expected,5)
+per = [list(i) for i in permutations]
 
 class TestMainFunction(unittest.TestCase):
-    def __init__(self):
-        self.expected = [i for i in range(5)]
-	permutations = itertools.permutations(expected,5)
-        self.per = [list(i) for i in permutations]
-
+"""Testing for every sorting algorithm"""
 
     def test_bubble_original():
         for i in per:

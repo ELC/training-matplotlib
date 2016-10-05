@@ -1,5 +1,11 @@
 import context
-import algorithms.Sorting as sort
+from algorithms.Sorting import bubble_original
+from algorithms.Sorting import false_bubble_from_i
+from algorithms.Sorting import false_bubble_from_0
+from algorithms.Sorting import cocktail_bubble
+from algorithms.Sorting import cocktail_selection
+from algorithms.Sorting import selection
+from algorithms.Sorting import insertion
 import unittest
 import itertools
 
@@ -12,34 +18,34 @@ class TestSortingAlgorithms(unittest.TestCase):
 
     def test_bubble_original(self):
         for i in per:
-            assert sort.bubble_original.main(i) == expected
+            assert bubble_original.main(i) == expected
     
     
     def test_false_bubble_from_i(self):
         for i in per:
-            assert sort.false_bubble_from_i.main(i) == expected
+            assert false_bubble_from_i.main(i) == expected
     
     
     def test_false_bubble_from_0(self):
         for i in per:
-            assert sort.false_bubble_from_0.main(i) == expected
+            assert false_bubble_from_0.main(i) == expected
     
     
     def test_cocktailbubble(self):
         for i in per:
-            assert sort.cocktail_bubble.main(i) == expected
+            assert cocktail_bubble.main(i) == expected
     
     
     def test_cocktailselection(self):
         for i in per:
-            assert sort.cocktail_selection.main(i) == expected
+            assert cocktail_selection.main(i) == expected
     
     
     def test_insertion(self):
         for i in per:
-            assert sort.insertion.main(i) == expected
+            assert insertion.main(i) == expected
     
     
     def test_selection(self):
         for i in per:
-            assert sort.selection.main(i) == expected
+            assert selection.main(i) == expected

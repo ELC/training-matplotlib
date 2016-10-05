@@ -11,7 +11,7 @@ python:
 
 install: pip install -r requirements.txt
 script:
-- py.test ./Freelance/sumado/test_unittest.py
+- py.test ./projects/sumado/test_unittest.py
 - travis-sphinx build
 
 after_success:

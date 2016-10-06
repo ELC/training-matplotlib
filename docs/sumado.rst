@@ -27,14 +27,6 @@ Mainfunction
     :undoc-members:
     :show-inheritance:
 
-Presentation
-------------
-
-.. automodule:: sumado.presentation
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Project Description
 -------------------

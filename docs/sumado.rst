@@ -11,13 +11,6 @@ Manage Adjacency Lists
     :undoc-members:
     :show-inheritance:
 
-Adjacency Lists Creator
------------------------
-
-.. automodule:: sumado.create_adjacency_lists
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 Mainfunction
 ------------

@@ -4,9 +4,9 @@ SU-MA-DO
 Modules
 -------
 
-Context
--------
-.. automodule:: sumado.context
+Manage Adjacency Lists
+----------------------
+.. automodule:: sumado.manage_adj_lists
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,0 @@
-Sphinx==1.4.8
-travis-sphinx == 1.4.2
-sphinx-rtd-theme==0.1.9
-flask==0.11.1
